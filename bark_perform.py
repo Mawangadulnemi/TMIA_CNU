@@ -1,152 +1,106 @@
-import argparse
-import numpy as np
-from rich import print
-from bark_infinity import config
-
-logger = config.logger
-from bark_infinity import generation
-from bark_infinity import api
-from bark_infinity import text_processing
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import subprocess
 import os
-import time
-import random
-import torch
-from torch.utils import collect_env
+from fastapi.responses import FileResponse
+import logging
+import shutil
 
-text_prompts_in_this_file = []
+logging.basicConfig(level=logging.INFO)
 
-try:
-    text_prompts_in_this_file.append(
-        f"It's {text_processing.current_date_time_in_words()} And if you're hearing this, Bark is working. But you didn't provide any text"
-    )
-except Exception as e:
-    print(f"An error occurred: {e}")
+app = FastAPI()
 
-text_prompt = """
-    In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move. However, Bark is working.
-"""
-text_prompts_in_this_file.append(text_prompt)
+class TextRequest(BaseModel):
+    text: str
 
-text_prompt = """
-    A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools.
-"""
-text_prompts_in_this_file.append(text_prompt)
+def clear_folder(folder_path):
+    if os.path.exists(folder_path):
+        for file in os.listdir(folder_path):
+            file_path = os.path.join(folder_path, file)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                    logging.info(f"Deleted file: {file_path}")
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+                    logging.info(f"Deleted directory: {file_path}")
+            except Exception as e:
+                logging.error(f"Failed to delete {file_path}. Reason: {e}")
 
-def get_group_args(group_name, updated_args):
-    updated_args_dict = vars(updated_args)
-    group_args = {}
-    for key, value in updated_args_dict.items():
-        if key in dict(config.DEFAULTS[group_name]):
-            group_args[key] = value
-    return group_args
+@app.post("/generate_audio")
+async def generate_audio(request: TextRequest):
+    try:
+        # samples 폴더 정리
+        clear_folder("bark_samples")
+        
+        text = request.text
+        # 환경 변수 설정
+        env = os.environ.copy()
+        env["PYTHONIOENCODING"] = "utf-8"
 
-def main(args):
-    if args.loglevel is not None:
-        logger.setLevel(args.loglevel)
+        # Bark TTS를 실행하여 텍스트를 음성으로 변환합니다.
+        command = [
+            "python", "bark_perform.py",
+            "--text_prompt", text,
+            "--history_prompt", "bark/assets/prompts/ko_speaker_4.npz",
+            "--split_input_into_separate_prompts_by", "sentence",
+            "--split_input_into_separate_prompts_by_value", "25",
+            "--always_save_speaker", "True",
+            "--output_dir", "bark_samples",
+            "--output_format", "wav",
+            "--output_filename", "output.wav",
+            "--text_use_gpu", "True",
+            "--coarse_use_gpu", "True",
+            "--fine_use_gpu", "True",
+            "--codec_use_gpu", "True",
+            "--split_character_goal_length", "90",
+            "--split_character_max_length", "130"
+        ]
 
-    if args.OFFLOAD_CPU is not None:
-        generation.OFFLOAD_CPU = args.OFFLOAD_CPU
+        logging.info(f"Running command: {' '.join(command)}")
+        result = subprocess.run(command, capture_output=True, text=True, env=env, encoding='utf-8', errors='replace')
+        
+        if result.returncode != 0:
+            # 실행 실패 시 에러 메시지를 로깅합니다.
+            logging.error(f"Bark TTS generation failed: {result.stderr}")
+            raise HTTPException(status_code=500, detail=f"Bark TTS generation failed: {result.stderr}")
+
+        # 고정된 오디오 파일 경로
+        audio_file_path = os.path.join("bark_samples", "output.wav")
+        logging.info(f"Looking for audio file at: {audio_file_path}")
+
+        if not os.path.exists(audio_file_path):
+            logging.error("Audio file not found")
+            logging.error(f"Subprocess stderr: {result.stderr}")
+            logging.error(f"Subprocess stdout: {result.stdout}")
+            raise HTTPException(status_code=404, detail="Audio file not found")
+        
+        # 임시 파일에 오디오 데이터를 복사하여 인코딩 문제 해결
+        temp_file_path = "bark_samples/temp_output.wav"
+        with open(audio_file_path, 'rb') as input_file, open(temp_file_path, 'wb') as output_file:
+            shutil.copyfileobj(input_file, output_file)
+        
+        logging.info(f"Audio file generated and copied to: {temp_file_path}")
+        logging.info(f"Original audio file path: {audio_file_path}")
+        logging.info(f"Temporary audio file path: {temp_file_path}")
+
+        return {"message": "TTS generated successfully.", "audio_file": temp_file_path}
+
+    except Exception as e:
+        logging.error(f"Error generating TTS: {e}")
+        raise HTTPException(status_code=500, detail=f"Error generating TTS: {e}")
+
+@app.get("/bark_samples/{filename:path}")
+async def get_audio_file(filename: str):
+    file_path = os.path.join("bark_samples", filename)
+    logging.info(f"File path requested: {file_path}")
+    if os.path.exists(file_path):
+        logging.info(f"File found: {file_path}")
+        return FileResponse(file_path)
     else:
-        if generation.get_SUNO_USE_DIRECTML() is not True:
-            generation.OFFLOAD_CPU = True
-    if args.USE_SMALL_MODELS is not None:
-        generation.USE_SMALL_MODELS = args.USE_SMALL_MODELS
-    if args.GLOBAL_ENABLE_MPS is not None:
-        generation.GLOBAL_ENABLE_MPS = args.GLOBAL_ENABLE_MPS
-
-    if not args.silent:
-        if args.detailed_gpu_report or args.show_all_reports:
-            print(api.startup_status_report(quick=False))
-        elif not args.text_prompt and not args.prompt_file:
-            print(api.startup_status_report(quick=True))
-        if args.detailed_hugging_face_cache_report or args.show_all_reports:
-            print(api.hugging_face_cache_report())
-        if args.detailed_cuda_report or args.show_all_reports:
-            print(api.cuda_status_report())
-        if args.detailed_numpy_report:
-            print(api.numpy_report())
-        if args.run_numpy_benchmark or args.show_all_reports:
-            from bark_infinity.debug import numpy_benchmark
-            numpy_benchmark()
-
-    if args.list_speakers:
-        api.list_speakers()
-        return
-
-    if args.render_npz_samples:
-        api.render_npz_samples()
-        return
-
-    if args.text_prompt:
-        text_prompts_to_process = [args.text_prompt]
-    elif args.prompt_file:
-        text_file = text_processing.load_text(args.prompt_file)
-        if text_file is None:
-            logger.error(f"Error loading file: {args.prompt_file}")
-            return
-        text_prompts_to_process = text_processing.split_text(
-            text_processing.load_text(args.prompt_file),
-            args.split_input_into_separate_prompts_by,
-            args.split_input_into_separate_prompts_by_value,
-        )
-        print(f"\nProcessing file: {args.prompt_file}")
-        print(f"  Looks like: {len(text_prompts_to_process)} prompt(s)")
-    else:
-        print("No --text_prompt or --prompt_file specified, using test prompt.")
-        text_prompts_to_process = random.sample(text_prompts_in_this_file, 2)
-
-    things = len(text_prompts_to_process) + args.output_iterations
-    if things > 10:
-        if args.dry_run is False:
-            print(f"WARNING: You are about to process {things} prompts. Consider using '--dry-run' to test things first.")
-
-    print("Loading Bark models...")
-    if not args.dry_run and generation.get_SUNO_USE_DIRECTML() is not True:
-        generation.preload_models(
-            args.text_use_gpu,
-            args.text_use_small,
-            args.coarse_use_gpu,
-            args.coarse_use_small,
-            args.fine_use_gpu,
-            args.fine_use_small,
-            args.codec_use_gpu,
-            args.force_reload,
-        )
-
-    print("Done.")
-
-    for idx, text_prompt in enumerate(text_prompts_to_process, start=1):
-        if len(text_prompts_to_process) > 1:
-            print(f"\nPrompt {idx}/{len(text_prompts_to_process)}:")
-
-        for iteration in range(1, args.output_iterations + 1):
-            if args.output_iterations > 1:
-                print(f"\nIteration {iteration} of {args.output_iterations}.")
-                if iteration == 1:
-                    print("ss", text_prompt)
-
-            args.current_iteration = iteration
-            args.text_prompt = text_prompt
-            args_dict = vars(args)
-
-            api.generate_audio_long(**args_dict)
-
-    output_dir = args.output_dir if args.output_dir else "bark_samples"
-    expected_output_path = os.path.join(output_dir, "output.wav")
-
-    # Check the actual generated file and rename it to expected output path
-    for file in os.listdir(output_dir):
-        if file.startswith("output.wav"):
-            actual_output_path = os.path.join(output_dir, file)
-            os.rename(actual_output_path, expected_output_path)
-            print(f"Renamed {actual_output_path} to {expected_output_path}")
-            break
-    else:
-        print(f"Expected file {expected_output_path} does not exist.")
+        logging.error("File not found")
+        raise HTTPException(status_code=404, detail="File not found")
 
 if __name__ == "__main__":
-    parser = config.create_argument_parser()
-    args = parser.parse_args()
-    updated_args = config.update_group_args_with_defaults(args)
-    namespace_args = argparse.Namespace(**updated_args)
-    main(namespace_args)
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
