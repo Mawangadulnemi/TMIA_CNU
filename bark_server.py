@@ -13,9 +13,26 @@ app = FastAPI()
 class TextRequest(BaseModel):
     text: str
 
+def clear_folder(folder_path):
+    if os.path.exists(folder_path):
+        for file in os.listdir(folder_path):
+            file_path = os.path.join(folder_path, file)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                    logging.info(f"Deleted file: {file_path}")
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+                    logging.info(f"Deleted directory: {file_path}")
+            except Exception as e:
+                logging.error(f"Failed to delete {file_path}. Reason: {e}")
+
 @app.post("/generate_audio")
 async def generate_audio(request: TextRequest):
     try:
+        # samples 폴더 정리
+        clear_folder("bark_samples")
+        
         text = request.text
         # 환경 변수 설정
         env = os.environ.copy()
@@ -66,6 +83,7 @@ async def generate_audio(request: TextRequest):
         logging.info(f"Audio file generated and copied to: {temp_file_path}")
         logging.info(f"Original audio file path: {audio_file_path}")
         logging.info(f"Temporary audio file path: {temp_file_path}")
+
         return {"message": "TTS generated successfully.", "audio_file": temp_file_path}
 
     except Exception as e:
