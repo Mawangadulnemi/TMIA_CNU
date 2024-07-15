@@ -1,27 +1,30 @@
-from fastapi import FastAPI, File, UploadFile
-import whisper
-import requests
+from fastapi import FastAPI, File, UploadFile, HTTPException
 from pydantic import BaseModel
+import whisper
+import os
 
 app = FastAPI()
 
-# Whisper의 라지 모델 로드
+# Whisper 모델을 서버 시작 시 미리 로드합니다.
+print("Loading Whisper model...")
 model = whisper.load_model("large")
+print("Whisper model loaded.")
 
 class TextResponse(BaseModel):
     text: str
 
 @app.post("/transcribe/", response_model=TextResponse)
 async def transcribe(file: UploadFile = File(...)):
-    audio = await file.read()
-    with open("temp.wav", "wb") as f:
-        f.write(audio)
-    result = model.transcribe("temp.wav", language="ko")  
+    file_location = "temp.wav"
+    with open(file_location, "wb") as f:
+        f.write(await file.read())
+    
+    # 이미 로드된 모델을 사용하여 변환을 수행합니다.
+    result = model.transcribe(file_location, language="ko")
     text = result["text"]
-
-
-    response = requests.post("http://3.39.170.111:8000/bark/", json={"text": text})
-
+    
+    os.remove(file_location)  # 임시 파일 삭제
+    
     return TextResponse(text=text)
 
 if __name__ == "__main__":
