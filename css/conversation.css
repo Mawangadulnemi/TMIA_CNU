@@ -187,7 +187,7 @@ body {
 #controls {
     position: absolute;
     bottom: 20px;
-    left: 50%;
+    left: 57%;
     transform: translateX(-50%);
     display: flex;
     gap: 15px;
