@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tmia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+  />
+  <script src="https://kit.fontawesome.com/1183f98c32.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <script type="module" src="src/scripts.js" defer></script>
+</head>
+<body>
+<header class="header">
+  <a href="index.html">
+    <img class="header__logo__img" src="assets/videos/Tmia_logo.png" alt="logo"/>
+  </a>
+  <nav class="header__nav">
+    <ul class="header__menu">
+      <li><a href="#" class="header__menu__item active">Home</a></li>
+      <li><a href="#" class="header__menu__item">About</a></li>
+      <li><a href="#" class="header__menu__item">메뉴3</a></li>
+      <li><a href="#" class="header__menu__item">메뉴4</a></li>
+      <li><a href="#" class="header__menu__item">메뉴5</a></li>
+    </ul>
+  </nav>
+  <div class="header__extra">
+    <a href="#" class="header__language">KOR</a>
+    <button class="header__menu-button">MENU</button>
+  </div>
+</header>
+<div class="login">
+  <div class="login__container">
+    <h2 class="login__title">LOGIN</h2>
+    <form class="login__form">
+      <div class="login__form-group">
+        <label for="username" class="login__label">USERNAME</label>
+        <input type="text" id="username" class="login__input" required/>
+      </div>
+      <div class="login__form-group">
+        <label for="password" class="login__label">PASSWORD</label>
+        <input type="password" id="password" class="login__input" required/>
+      </div>
+      <button type="submit" class="login__button">LOGIN</button>
+    </form>
+    <div class="login__footer">
+      <a href="#" class="login__link">Forgot Password?</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
