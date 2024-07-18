@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tmia</title>
+        <link rel="stylesheet" href="css/conversation.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600&family=Open+Sans:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://kit.fontawesome.com/1183f98c32.js" crossorigin="anonymous"></script>
+        <script type="module" src="src/conversation.js" defer></script>
+    </head>
+    <body>
+        <div id="question-container">
+            <ul id="question-list"></ul>
+        </div>
+        <div id="video-container">
+            <div id="top-bar">
+                <div id="status-left">
+                    <span id="current-time">10:30</span>
+                    <span id="call-status"><i class="fa-solid fa-phone"></i></span>
+                </div>
+                <div id="status-center">
+                    <span class="circle red"></span>
+                    <span class="circle orange"></span>
+                    <span class="circle green"></span>
+                </div>
+                <div id="status-icons">
+                    <i class="fa-solid fa-signal"></i>
+                    <i class="fa-solid fa-wifi"></i>
+                    <i class="fa-solid fa-battery-full"></i>
+                </div>
+            </div>
+            <div class="video-wrapper">
+                <video id="remoteVideo" autoplay muted></video>
+                <video id="remoteVideo2" autoplay muted class="hidden"></video>
+            </div>
+            <video id="localVideo" autoplay muted></video>
+        </div>
+        <div id="controls">
+            <button id="muteButton"><i class="fa-solid fa-microphone-slash"></i></button>
+            <button id="cameraButton"><i class="fa-solid fa-video"></i></button>
+            <button id="fullscreenButton"><i class="fa-solid fa-expand"></i></button>
+            <button id="endCallButton"><i class="fa-solid fa-phone-slash"></i></button>
+        </div>
+    </body>
+</html>
