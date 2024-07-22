@@ -7,14 +7,17 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member {
+@Entity
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,19 +26,29 @@ public class Member {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
     private String name;
 
     @Enumerated(EnumType.STRING)
-    private MemberRole role;
+    @Column(nullable = false)
+    private Role role;
 
-    public Member(String email, String password, String name, MemberRole role) {
+    @Builder
+    public User(String email, String password, String name, Role role) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.role = role;
+    }
+
+    public String getRoleKey() {
+        return this.role.getKey();
+    }
+
+    public User update(String name) {
+        this.name = name;
+        return this;
     }
 }

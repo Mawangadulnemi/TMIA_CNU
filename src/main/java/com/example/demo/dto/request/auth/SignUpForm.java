@@ -1,7 +1,7 @@
 package com.example.demo.dto.request.auth;
 
-import com.example.demo.entity.Member;
-import com.example.demo.entity.MemberRole;
+import com.example.demo.entity.User;
+import com.example.demo.entity.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -26,9 +26,13 @@ public class SignUpForm {
     private String name;
 
     @NotNull
-    private MemberRole role;
+    private Role role;
 
-    public Member toEntity() {
-        return new Member(this.email, this.password, this.name, this.role);
+    public User toEntity() {
+        return User.builder()
+            .email(this.email)
+            .password(this.password)
+            .name(this.name)
+            .role(this.role).build();
     }
 }

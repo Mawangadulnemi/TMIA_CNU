@@ -2,9 +2,9 @@ package com.example.demo.service;
 
 import com.example.demo.dto.request.auth.LoginForm;
 import com.example.demo.dto.request.auth.SignUpForm;
-import com.example.demo.entity.Member;
-import com.example.demo.entity.MemberRole;
-import com.example.demo.repository.MemberRepository;
+import com.example.demo.entity.User;
+import com.example.demo.entity.Role;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.util.JwtProvider;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,35 +12,36 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthService {
 
-    private final MemberRepository memberRepository;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
 
-    public AuthService(MemberRepository memberRepository, PasswordEncoder passwordEncoder,
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder,
         JwtProvider jwtProvider) {
-        this.memberRepository = memberRepository;
+        this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtProvider = jwtProvider;
     }
 
     public void signUp(SignUpForm signUpForm) {
 
-        if (signUpForm.getRole() == MemberRole.ADMIN) {
+        if (signUpForm.getRole() == Role.ADMIN) {
             throw new IllegalArgumentException();
         }
 
-        memberRepository.save(signUpForm.toEntity());
+        userRepository.save(signUpForm.toEntity());
     }
 
     public String login(LoginForm loginForm) {
 
-        Member member = memberRepository.findByEmail(loginForm.getEmail())
+        User user = userRepository.findByEmail(loginForm.getEmail())
             .orElseThrow(IllegalArgumentException::new);
 
-        if (!passwordEncoder.matches(loginForm.getPassword(), member.getPassword())) {
+        if (!passwordEncoder.matches(loginForm.getPassword(), user.getPassword())) {
             throw new IllegalArgumentException();
         }
 
-        return jwtProvider.generateToken(member.getId(), member.getRole());
+        return null;
+        //return jwtProvider.generateToken(user.getId(), user.getRole());
     }
 }
