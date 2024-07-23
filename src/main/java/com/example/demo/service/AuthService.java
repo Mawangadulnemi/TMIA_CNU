@@ -2,8 +2,8 @@ package com.example.demo.service;
 
 import com.example.demo.dto.request.auth.LoginForm;
 import com.example.demo.dto.request.auth.SignUpForm;
-import com.example.demo.entity.User;
 import com.example.demo.entity.Role;
+import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.util.JwtProvider;
 import org.springframework.security.crypto.password.PasswordEncoder;

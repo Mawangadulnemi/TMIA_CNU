@@ -1,7 +1,7 @@
 package com.example.demo.dto.request.auth;
 
-import com.example.demo.entity.User;
 import com.example.demo.entity.Role;
+import com.example.demo.entity.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

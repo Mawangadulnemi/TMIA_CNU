@@ -3,7 +3,6 @@ package com.example.demo.config.auth;
 import com.example.demo.entity.User;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

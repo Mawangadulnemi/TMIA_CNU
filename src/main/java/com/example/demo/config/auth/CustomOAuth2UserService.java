@@ -1,10 +1,8 @@
 package com.example.demo.config.auth;
 
 import com.example.demo.config.auth.dto.OAuthAttributes;
-import com.example.demo.config.auth.dto.SessionUser;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
-import jakarta.servlet.http.HttpSession;
 import java.util.Collections;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,7 +19,6 @@ import org.springframework.stereotype.Service;
 public class CustomOAuth2UserService implements OAuth2UserService {
 
     private final UserRepository userRepository;
-    private final HttpSession httpSession;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {

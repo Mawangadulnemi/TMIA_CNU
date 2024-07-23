@@ -1,16 +1,16 @@
 package com.example.demo.util;
 
-import static com.example.demo.exception.ErrorCode.*;
+import static com.example.demo.exception.ErrorCode.INVALID_JWT_SIGNATURE;
+import static com.example.demo.exception.ErrorCode.INVALID_TOKEN;
+import static com.example.demo.exception.ErrorCode.TOKEN_EXPIRED;
 
 import com.example.demo.config.auth.TokenException;
-import com.example.demo.entity.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.Jwts.SIG;
 import io.jsonwebtoken.MalformedJwtException;
 import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;

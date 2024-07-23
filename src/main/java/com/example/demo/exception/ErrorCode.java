@@ -1,6 +1,6 @@
 package com.example.demo.exception;
 
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

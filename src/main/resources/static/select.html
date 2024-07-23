@@ -1,78 +1,69 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tmia</title>
-  <link rel="stylesheet" href="css/select.css"/>
-  <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600&family=Open+Sans:wght@400;600&display=swap"
-      rel="stylesheet"
-  />
-  <script src="https://kit.fontawesome.com/1183f98c32.js" crossorigin="anonymous"></script>
-  <script type="module" src="src/scripts.js" defer></script>
-</head>
-<body>
-<header class="header">
-  <a href="index.html">
-    <img class="header__logo__img" src="assets/videos/Tmia_logo.png" alt="logo"/>
-  </a>
-  <nav class="header__nav">
-    <ul class="header__menu">
-      <li><a href="#home" class="header__menu__item active">Home</a></li>
-      <li><a href="#about" class="header__menu__item">About</a></li>
-      <li><a href="#introduce" class="header__menu__item">Introduce</a></li>
-      <li><a href="#pricing" class="header__menu__item">Pricing</a></li>
-      <li><a href="#conatact" class="header__menu__item">Contact</a></li>
-    </ul>
-  </nav>
-  <div class="header__extra">
-    <a href="#" id="languageButton" class="header__language">이용하기</a>
-    <button id="loginButton" class="header__login-button">LOGIN</button>
-  </div>
-</header>
-<div class="container">
-  <div class="title">영상통화를 걸 상대방을 선택하세요.</div>
-  <div class="profiles">
-    <div class="profile">
-      <img src="assets/videos/sinhaechul.png" alt="신해철"/>
-      <div class="profile__name">신해철</div>
-    </div>
-    <div class="add__profile profile">
-      <div class="profile__icon-container" id="addProfileButton">
-        <i class="fa-solid fa-circle-plus profile__icon"></i>
-      </div>
-      <div class="profile__name">상대방 추가</div>
-    </div>
-  </div>
-  <button class="manage-button">상대방 관리</button>
-</div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tmia</title>
+        <link rel="stylesheet" href="css/select.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600&family=Open+Sans:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://kit.fontawesome.com/1183f98c32.js" crossorigin="anonymous"></script>
+        <script type="module" src="src/scripts.js" defer></script>
+    </head>
+    <body>
+        <header class="header">
+            <a href="index.html">
+                <img class="header__logo__img" src="assets/videos/Tmia_logo.png" alt="logo" />
+            </a>
+            <div class="header__extra">
+                <a href="#" id="languageButton" class="header__language">이용하기</a>
+                <button id="loginButton" class="header__login-button">LOGIN</button>
+            </div>
+        </header>
+        <div class="container">
+            <div class="title">영상통화를 걸 상대방을 선택하세요.</div>
+            <div class="profiles">
+                <div class="profile">
+                    <img src="assets/videos/sinhaechul.png" alt="신해철" />
+                    <div class="profile__name">신해철</div>
+                </div>
+                <div class="add__profile profile">
+                    <div class="profile__icon-container" id="addProfileButton">
+                        <i class="fa-solid fa-circle-plus profile__icon"></i>
+                    </div>
+                    <div class="profile__name">상대방 추가</div>
+                </div>
+            </div>
+            <button class="manage-button">상대방 관리</button>
+        </div>
 
-<!-- Modal -->
-<div class="modal" id="modal">
-  <div class="modal__content">
-    <span class="modal__close" id="modalClose">&times;</span>
-    <h2>상대방 추가</h2>
-    <form>
-      <div class="modal__form-group">
-        <label for="name">이름:</label>
-        <input type="text" id="name" name="name" required/>
-      </div>
-      <div class="modal__form-group">
-        <label for="photo">사진:</label>
-        <input type="file" id="photo" name="photo" accept="image/*" required/>
-      </div>
-      <div class="modal__form-group">
-        <label for="voice">음성파일:</label>
-        <input type="file" id="voice" name="voice" accept="audio/*" required/>
-      </div>
-      <div class="modal__form-group">
-        <label for="relation">나와의 관계:</label>
-        <input type="text" id="relation" name="relation" required/>
-      </div>
-      <button type="submit" class="modal__submit-button">추가</button>
-    </form>
-  </div>
-</div>
-</body>
+        <!-- Modal -->
+        <div class="modal" id="modal">
+            <div class="modal__content">
+                <span class="modal__close" id="modalClose">&times;</span>
+                <h2>상대방 추가</h2>
+                <form>
+                    <div class="modal__form-group">
+                        <label for="name">이름:</label>
+                        <input type="text" id="name" name="name" required />
+                    </div>
+                    <div class="modal__form-group">
+                        <label for="photo">사진:</label>
+                        <input type="file" id="photo" name="photo" accept="image/*" required />
+                    </div>
+                    <div class="modal__form-group">
+                        <label for="voice">음성파일:</label>
+                        <input type="file" id="voice" name="voice" accept="audio/*" required />
+                    </div>
+                    <div class="modal__form-group">
+                        <label for="relation">나와의 기억</label>
+                        <input type="file" id="relation" name="relation" accept="pdf/*" required />
+                    </div>
+                    <button type="submit" class="modal__submit-button">추가</button>
+                </form>
+            </div>
+        </div>
+    </body>
 </html>
