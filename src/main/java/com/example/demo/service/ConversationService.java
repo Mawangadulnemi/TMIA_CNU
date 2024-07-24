@@ -8,7 +8,7 @@ public interface ConversationService {
 
     public Path getTempDir() throws IOException;
 
-    public void saveFile(Path tempDir, MultipartFile file) throws IOException;
+    public Path saveFile(Path tempDir, MultipartFile file) throws IOException;
 
     public MultipartFile openFile(Path path);
 
