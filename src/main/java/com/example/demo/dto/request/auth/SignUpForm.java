@@ -25,8 +25,11 @@ public class SignUpForm {
     @NotBlank
     private String name;
 
-    @NotNull
     private Role role;
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public User toEntity() {
         return User.builder()

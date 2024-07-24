@@ -3,14 +3,12 @@ package com.example.demo.controller;
 import com.example.demo.dto.request.auth.LoginForm;
 import com.example.demo.dto.request.auth.SignUpForm;
 import com.example.demo.service.AuthService;
-import jakarta.servlet.http.Cookie;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,12 +25,12 @@ public class AuthController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
-    public void signUp(@Valid @RequestBody SignUpForm signUpForm) {
+    public void signUp(@Valid SignUpForm signUpForm) {
         authService.signUp(signUpForm);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Void> login(@Valid @RequestBody LoginForm loginForm) {
+    public ResponseEntity<Void> login(@Valid LoginForm loginForm) {
         String token = authService.login(loginForm);
         ResponseCookie cookie = ResponseCookie.from("token", token)
             .httpOnly(true)

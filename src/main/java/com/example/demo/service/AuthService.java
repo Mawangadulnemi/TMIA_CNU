@@ -25,9 +25,7 @@ public class AuthService {
 
     public void signUp(SignUpForm signUpForm) {
 
-        if (signUpForm.getRole() == Role.ADMIN) {
-            throw new IllegalArgumentException();
-        }
+        signUpForm.setRole(Role.GUEST);
 
         userRepository.save(signUpForm.toEntity());
     }
