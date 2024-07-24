@@ -3,9 +3,11 @@ package com.example.demo.controller;
 import com.example.demo.dto.request.auth.LoginForm;
 import com.example.demo.dto.request.auth.SignUpForm;
 import com.example.demo.service.AuthService;
+import jakarta.servlet.http.Cookie;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,8 +34,14 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<Void> login(@Valid @RequestBody LoginForm loginForm) {
         String token = authService.login(loginForm);
+        ResponseCookie cookie = ResponseCookie.from("token", token)
+            .httpOnly(true)
+            .maxAge(2 * 60 * 60)
+            .path("/")
+            .build();
         return ResponseEntity.ok()
-            .header(HttpHeaders.AUTHORIZATION, token)
+//            .header(HttpHeaders.AUTHORIZATION, token)
+            .header(HttpHeaders.SET_COOKIE, cookie.toString())
             .build();
     }
 }
