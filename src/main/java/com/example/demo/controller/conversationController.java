@@ -30,9 +30,6 @@ public class conversationController {
 
     private final ConversationService conversationService;
 
-    @Value("classpath:static\\video\\sample.mp4")
-    private Resource resource;
-
     public conversationController(ConversationService conversationService) {
         this.conversationService = conversationService;
     }
@@ -88,8 +85,15 @@ public class conversationController {
         // tts+sts에 보내서 음성 받아오기 2분
         // 음성을 채묵이 모델에 보내서 받아오는게 n분
 
+        Resource video = new ClassPathResource("static/video/1.mp4");
+
+        
+        if (!video.exists()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
         return ResponseEntity.ok()
             .header(HttpHeaders.CONTENT_TYPE, "video/mp4")
-            .body(resource);
+            .body(video);
     }
 }

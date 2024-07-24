@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const questionList = document.getElementById('question-list');
-    const apiBaseUrl = 'http://192.168.0.140:8080/api/conversation';
+    const apiBaseUrl = '/api/conversation';
     const remoteVideo = document.getElementById('remoteVideo');
     const remoteVideo2 = document.getElementById('remoteVideo2');
     const localVideo = document.getElementById('localVideo');
@@ -136,10 +136,7 @@ async function fetchVideo(id, q, apiBaseUrl, baseVideoUrl) {
 
     try {
         const response = await fetch(apiUrl, {
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
+            method: 'GET'
         });
 
         if (!response.ok) {
