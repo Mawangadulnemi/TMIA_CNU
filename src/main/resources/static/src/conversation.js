@@ -136,10 +136,7 @@ async function fetchVideo(id, q, apiBaseUrl, baseVideoUrl) {
 
     try {
         const response = await fetch(apiUrl, {
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
+            method: 'GET'
         });
 
         if (!response.ok) {
