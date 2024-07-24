@@ -13,6 +13,7 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -76,9 +77,10 @@ public class conversationController {
         @Valid @ModelAttribute UploadVoiceRequestDto requestDto) {
 
         MultipartFile requestVoice = requestDto.getFile();
+        Path questionVoice;
         try {
             Path tempDir = conversationService.getTempDir();
-            conversationService.saveFile(tempDir, requestVoice);
+            questionVoice = conversationService.saveFile(tempDir, requestVoice);
         } catch (IOException e) {
             log.warn("파일 업로드 실패: {}", e.getMessage());
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -90,8 +92,10 @@ public class conversationController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+        Resource voice = new FileSystemResource(questionVoice);
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-        body.add("file", requestVoice);
+        body.add("file", voice);
 
 
         HttpEntity<MultiValueMap<String, Object>> entity = new HttpEntity<>(body, headers);
@@ -110,7 +114,7 @@ public class conversationController {
             .uri("http://localhost:8000/speaking-style?question="+voiceText)
             .retrieve()
             .onStatus(HttpStatusCode::is4xxClientError, ((request, response) -> {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, voiceText);
             }))
             .body(SimilarityResponseDto.class);
 
