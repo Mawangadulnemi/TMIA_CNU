@@ -142,13 +142,13 @@ public class conversationController {
             }))
             .body(SimilarityResponseDto.class);
 
-        log.info("유사도검사 결과: {}", similarityResponseDto);
 
         if (similarityResponseDto == null) {
             log.warn("유사도검사 결과 null");
             return defaultResponse;
         }
 
+        log.info("유사도검사 결과: {}", similarityResponseDto.toString());
 
 
         int videoNum = similarityResponseDto.getIndex();
@@ -156,7 +156,7 @@ public class conversationController {
 
         
         if (!video.exists()) {
-            log.warn("비디오 없음. 유사도겸사 결과: {}, 비디오: {}", similarityResponseDto, video);
+            log.warn("비디오 없음. 유사도겸사 결과: {}, 비디오: {}", similarityResponseDto.toString(), video);
             return defaultResponse;
         }
 
