@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     questionList.querySelectorAll('button').forEach((button, index) => {
         button.addEventListener('click', () => {
-            const q = index;
+            const q = index+1;
             const id = '34343';
             fetchVideo(id, q, apiBaseUrl, baseVideoUrl);
         });
@@ -151,10 +151,7 @@ async function fetchVideo(id, q, apiBaseUrl, baseVideoUrl) {
 
     try {
         const response = await fetch(apiUrl, {
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
+            method: 'GET'
         });
 
         if (!response.ok) {

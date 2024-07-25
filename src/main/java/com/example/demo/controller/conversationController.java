@@ -156,7 +156,7 @@ public class conversationController {
         }
 
 
-        int videoNum = similarityResponseDto.getIndex();
+        int videoNum = similarityResponseDto.getIndex()+1;
         Resource video = new ClassPathResource("static/video/" + videoNum +  ".mp4");
 
         
