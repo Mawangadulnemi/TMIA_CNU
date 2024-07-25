@@ -108,6 +108,12 @@ public class conversationController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
+        if (voiceText.isBlank()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "빈 질문 음성입니다");
+        }
+
+        log.info("STT 결과: {}", voiceText);
+
         RestClient restClient = RestClient.create();
 
         SimilarityResponseDto similarityResponseDto = restClient.get()
@@ -121,6 +127,8 @@ public class conversationController {
         if (similarityResponseDto == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
+
+        log.info("유사도검사 결과: {}", similarityResponseDto);
 
 
         int videoNum = similarityResponseDto.getIndex();
