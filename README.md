@@ -113,19 +113,19 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
   </tr>
   <tr>
     <td align="center" valign="top">
-      <img src="https://github.com/user-attachments/assets/e6591a70-c283-46d5-baf7-46e08857296b" alt="image3" width="200"/>
+      <img src="https://github.com/user-attachments/assets/42064615-caba-4c24-a03f-1c6b78a0096d" alt="이선균" width="200"/>
     </td>
     <td align="center" valign="top">
-      <img src="https://github.com/user-attachments/assets/39500fa4-815c-4579-8cbc-ad3b6701008d" alt="image2" width="200"/>
+      <img src="https://github.com/user-attachments/assets/dc78bac5-682d-45fa-8bbc-2547a7530ba7" alt="아이유" width="200"/>
     </td>
     <td align="center" valign="top">
-      <img src="https://github.com/user-attachments/assets/3ca746b3-ad07-40fe-844e-48afeb185c2b" alt="image1" width="200"/>
+      <img src="https://github.com/user-attachments/assets/e776d72d-c732-4c79-8427-55355ec08f0f" alt="신해철" width="200"/>
     </td>
     <td align="center" valign="top">
-      <img src="https://github.com/user-attachments/assets/4f7cf4ca-e338-4f3c-b8bb-70c989fd0641" alt="image4" width="200"/>
+      <img src="https://github.com/user-attachments/assets/80b30fbd-7459-4664-9ecc-1eb83bd66ace" alt="김채원" width="200"/>
     </td>
     <td align="center" valign="top">
-      <img src="https://github.com/user-attachments/assets/1ecc1cad-4aae-4c84-856a-27d091b9a013" alt="image5" width="200"/>
+      <img src="https://github.com/user-attachments/assets/c01c61e8-ed29-4c0d-8e43-c5600e27c8eb" alt="고윤정" width="200"/>
     </td>
   </tr>
   <tr>
@@ -170,6 +170,7 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 </table>
 
 
+
 ## 신해철
 
 <https://github.com/user-attachments/assets/9dd5ada5-0e07-4ec7-8488-492d377a6bb0.mp4>
@@ -200,8 +201,8 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 # 실행 가이드
 
 
-`홈페이지` 접속 -> [`회원가입`](#회원가입) OR [`로그인`](#로그인)</br>
--> [`이용하기(상단바/영상 하단)`](#이용하기상단바) -> [`영상통화 연결`](#영상통화-연결) -> [`예시 질문 선택`](#예시-질문-선택) / [`대화하기`](#대화하기) -> [`연락처 추가하기`](#연락처-추가하기)
+[`홈페이지`](https://osario.kr/) 접속 ➨ [`회원가입`](#회원가입) OR [`로그인`](#로그인)</br>
+➨ [`이용하기(상단바/영상 하단)`](#이용하기상단바) ➨ [`영상통화 연결`](#영상통화-연결) ➨ [`예시 질문 선택`](#예시-질문-선택) / [`대화하기`](#대화하기) ➨ [`연락처 추가하기`](#연락처-추가하기)
 
 😊이후 저의 **Be memorial**의 모든 서비스를 즐겨주세요😊
 
