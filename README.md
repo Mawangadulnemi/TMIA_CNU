@@ -128,11 +128,25 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
   </tr>
 </table>
 
+**신해철**
 
+<https://github.com/user-attachments/assets/1572dced-06bd-4a6c-93d9-b1aee8d1091d.mp4>
 
+**아이유**
 
+<https://github.com/user-attachments/assets/b666c747-7710-40e3-b601-663481e5995d.mp4>
 
+**이선균**
 
+<https://github.com/user-attachments/assets/33cf848d-2876-4f1e-8e5c-f81968e3ebeb.mp4>
+
+**김채원**
+
+<https://github.com/user-attachments/assets/bb26f9b7-0278-476c-bdb8-e2d1ceb1060c.mp4>
+
+**고윤정**
+
+<https://github.com/user-attachments/assets/2c916a14-74e7-4a5d-975e-39cc0b548aea.mp4>
 
 
 </div>
