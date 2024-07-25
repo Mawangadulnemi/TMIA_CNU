@@ -155,7 +155,6 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
       <ul>
         <li>신예 배우</li> 
         <li>떠오르는 스타</li>
-       https://github.com/user-attachments/assets/505df281-59e5-4278-89f9-9aafd5b808ea
       </ul>
     </td>
   </tr>
@@ -168,19 +167,19 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 
 ## 아이유
 
-<https://github.com/user-attachments/assets/b666c747-7710-40e3-b601-663481e5995d.mp4>
+<https://github.com/user-attachments/assets/2ab0b6ba-8d27-482c-b464-7457bb4892ef.mp4>
 
 ## 이선균
 
-<https://github.com/user-attachments/assets/33cf848d-2876-4f1e-8e5c-f81968e3ebeb.mp4>
+<https://github.com/user-attachments/assets/58955c27-733e-4408-917e-2c7675b93054.mp4>
 
 ## 김채원
 
-<https://github.com/user-attachments/assets/bb26f9b7-0278-476c-bdb8-e2d1ceb1060c.mp4>
+<https://github.com/user-attachments/assets/d2beed5b-ea87-4507-b638-262add8f0809.mp4>
 
 ## 고윤정
 
-<https://github.com/user-attachments/assets/2c916a14-74e7-4a5d-975e-39cc0b548aea.mp4>
+<https://github.com/user-attachments/assets/505df281-59e5-4278-89f9-9aafd5b808ea.mp4>
 
  *학습에 사용된 데이터는 절대 제공하지 않습니다. 또한, 해당 샘플은 문제 바로 삭제 조치가 취해질 예정입니다.* 
 </div>
