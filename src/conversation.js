@@ -165,10 +165,10 @@ async function fetchVideo(id, q, apiBaseUrl, baseVideoUrl) {
         const videoUrl = URL.createObjectURL(videoBlob);
 
         crossfade(currentVideo, nextVideo, videoUrl, () => {
-            nextVideo.loop = false; // Disable looping for the fetched video
+            nextVideo.loop = false;
             nextVideo.onended = () => {
                 crossfade(nextVideo, currentVideo, baseVideoUrl, () => {
-                    currentVideo.loop = true; // Re-enable looping for the base video
+                    currentVideo.loop = true;
                 });
             };
         });

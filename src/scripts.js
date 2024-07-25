@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const sections = document.querySelectorAll('main section');
     const loginButton = document.getElementById('loginButton');
     const languageButton = document.getElementById('languageButton');
-    let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
     // 메뉴 항목 클릭 이벤트
     menuItems.forEach((item) => {
@@ -36,12 +35,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // 로그인 상태 체크
+    function checkLoginStatus() {
+        if (sessionStorage.getItem('access_token')) {
+            loginButton.textContent = 'LOGOUT';
+        } else {
+            loginButton.textContent = 'LOGIN';
+        }
+    }
+
+    checkLoginStatus();
+
     // 로그인 버튼 클릭 이벤트
     loginButton.addEventListener('click', function () {
-        if (isLoggedIn) {
+        if (sessionStorage.getItem('access_token')) {
             // 로그아웃 로직
-            isLoggedIn = false;
-            localStorage.setItem('isLoggedIn', 'false');
+            sessionStorage.removeItem('access_token');
+            sessionStorage.removeItem('expires_in');
             loginButton.textContent = 'LOGIN';
             alert('로그아웃 되었습니다.');
             window.location.href = 'index.html'; // 로그아웃 후 index.html로 이동
@@ -51,17 +61,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // 로그인 상태 체크 (임시로 로컬 스토리지 사용)
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-        isLoggedIn = true;
-        loginButton.textContent = 'LOGOUT';
-    }
-
     // Tmia 이용하기 버튼 클릭 이벤트
     const ctaButton = document.getElementById('ctaButton');
     if (ctaButton) {
         ctaButton.addEventListener('click', function () {
-            if (isLoggedIn) {
+            if (sessionStorage.getItem('access_token')) {
                 window.location.href = 'select.html';
             } else {
                 window.location.href = 'login.html';
@@ -72,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 이용하기 (KOR) 버튼 클릭 이벤트
     if (languageButton) {
         languageButton.addEventListener('click', function () {
-            if (isLoggedIn) {
+            if (sessionStorage.getItem('access_token')) {
                 window.location.href = 'select.html';
             } else {
                 window.location.href = 'login.html';
@@ -86,16 +90,25 @@ document.addEventListener('DOMContentLoaded', function () {
         loginForm.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            const id = document.getElementById('id').value;
-            const password = document.getElementById('password').value;
+            const formData = new FormData(loginForm);
 
-            if (id === 'a' && password === '123') {
-                isLoggedIn = true;
-                localStorage.setItem('isLoggedIn', 'true');
-                window.location.href = 'index.html'; // 로그인 성공 후 이동할 페이지
-            } else {
-                alert('로그인 실패. ID와 비밀번호를 확인하세요.');
-            }
+            fetch('http://192.168.0.3:8080/api/auth/login', {
+                method: 'POST',
+                body: formData,
+            })
+                .then((response) => {
+                    if (response.status === 200) {
+                        sessionStorage.setItem('access_token', 'some_dummy_token');
+                        loginButton.textContent = 'LOGOUT'; // 로그인 성공 후 버튼 텍스트 변경
+                        window.location.href = 'index.html'; // 로그인 성공 후 이동할 페이지
+                    } else {
+                        throw new Error('로그인 실패. 이메일과 비밀번호를 확인하세요.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert(error.message);
+                });
         });
     }
 });
@@ -295,11 +308,30 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalCloseButton = document.getElementById('modalCloseButton');
 
     signupForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        // 회원가입 로직 추가 (예: 서버로 데이터 전송)
+        event.preventDefault(); // 기본 폼 제출 동작 막기
 
-        // 회원가입 완료 모달 표시
-        signupModal.style.display = 'flex';
+        const formData = new FormData(signupForm);
+        const password = formData.get('password');
+        const confirmPassword = formData.get('confirm_password');
+
+        // 비밀번호 확인
+        if (password !== confirmPassword) {
+            alert('비밀번호가 일치하지 않습니다.');
+            return;
+        }
+
+        fetch('http://192.168.0.3:8080/api/auth/signup', {
+            method: 'POST',
+            body: formData,
+        }).then((response) => {
+            console.log('응답 상태:', response.status); // 응답 상태 코드 로그
+            if (response.status === 201) {
+                signupModal.style.display = 'flex';
+                return response.json();
+            } else {
+                throw new Error('회원가입 실패');
+            }
+        });
     });
 
     modalCloseButton.addEventListener('click', function () {
