@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+
 import com.example.demo.dto.request.conversation.SimilarityRequestDto;
 import com.example.demo.dto.request.conversation.UploadVoiceRequestDto;
 import com.example.demo.dto.response.conversation.STTResponseDto;
@@ -122,8 +124,10 @@ public class conversationController {
 
         RestClient restClient = RestClient.create();
 
-        SimilarityResponseDto similarityResponseDto = restClient.get()
-            .uri("http://localhost:8000/speaking-style?question="+voiceText)
+        SimilarityResponseDto similarityResponseDto = restClient.post()
+            .uri("http://localhost:8001/speaking-style")
+            .contentType(APPLICATION_JSON)
+            .body(new SimilarityRequestDto(voiceText))
             .retrieve()
             .onStatus(HttpStatusCode::is4xxClientError, ((request, response) -> {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, voiceText);
