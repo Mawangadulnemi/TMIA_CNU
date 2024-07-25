@@ -33,7 +33,7 @@
                     <div class="profile__icon-container" id="addProfileButton">
                         <i class="fa-solid fa-circle-plus profile__icon"></i>
                     </div>
-                    <div class="profile__name">나만의 고인 추가</div>
+                    <div class="profile__name">연락처 추가</div>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="modal" id="modal">
             <div class="modal__content">
                 <span class="modal__close" id="modalClose">&times;</span>
-                <h2>나만의 고인 추가하기</h2>
+                <h2>연락처 추가하기</h2>
                 <br />
                 <form>
                     <div class="modal__form-group">
@@ -81,6 +81,15 @@
                 </div>
             </div>
             <audio id="loadingSound" src="assets/videos/loading_sound.mp3"></audio>
+        </div>
+        <!-- 연락처 생성 모달 -->
+        <div id="contactModal" class="contact-modal">
+            <div class="contact-modal-content">
+                <p>연락처를 생성하는 중입니다.</p>
+                <br />
+                <p>약 1시간 이상 소요됩니다.</p>
+                <button id="modalCloseButton" class="modal-close-button">확인</button>
+            </div>
         </div>
     </body>
 </html>

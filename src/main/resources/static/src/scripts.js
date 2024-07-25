@@ -1,6 +1,37 @@
 document.addEventListener('DOMContentLoaded', function () {
     const loginButton = document.getElementById('loginButton');
+    const menuItems = document.querySelectorAll('.header__menu__item');
+    const sections = document.querySelectorAll('main section');
 
+    // 메뉴 항목 클릭 이벤트
+    menuItems.forEach((item) => {
+        item.addEventListener('click', function () {
+            // 기존 활성화된 항목에서 active 클래스 제거
+            document.querySelector('.header__menu__item.active').classList.remove('active');
+            // 클릭된 항목에 active 클래스 추가
+            this.classList.add('active');
+        });
+    });
+
+    // 스크롤 이벤트를 통해 활성화된 메뉴 항목 업데이트
+    window.addEventListener('scroll', function () {
+        let currentSection = '';
+
+        // 현재 스크롤 위치에 따라 현재 섹션을 찾음
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 60) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+        // 메뉴 항목에서 active 클래스 업데이트
+        menuItems.forEach((item) => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === `#${currentSection}`) {
+                item.classList.add('active');
+            }
+        });
+    });
     // 로그인 상태 체크 함수
     function checkLoginStatus() {
         if (sessionStorage.getItem('access_token')) {
@@ -15,44 +46,39 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch('/api/auth/', {
             method: 'GET',
         })
-        .then((response) => {
-            if (response.status === 200) {
-                sessionStorage.setItem('access_token', 'some_dummy_token');
-                loginButton.textContent = 'LOGOUT';
-            } else if (response.status === 401) {
+            .then((response) => {
+                if (response.status === 200) {
+                    sessionStorage.setItem('access_token', 'some_dummy_token');
+                    loginButton.textContent = 'LOGOUT';
+                } else if (response.status === 401) {
+                    sessionStorage.removeItem('access_token');
+                    loginButton.textContent = 'LOGIN';
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
                 sessionStorage.removeItem('access_token');
                 loginButton.textContent = 'LOGIN';
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            sessionStorage.removeItem('access_token');
-            loginButton.textContent = 'LOGIN';
-        });
+            });
     }
 
     verifyLoginStatus();
-// 쿠키 삭제 함수
-    function deleteCookie(name) {
-        document.cookie = name + '=; Max-Age=-99999999;';
-    }
 
     // 로그인 버튼 클릭 이벤트
     loginButton.addEventListener('click', function () {
         fetch('/api/auth/logout', {
             method: 'GET',
         })
-        .then((response) => {
-            return response.status === 200
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            return false
-        });
+            .then((response) => {
+                return response.status === 200;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                return false;
+            });
         if (sessionStorage.getItem('access_token')) {
             // 로그아웃 로직
             sessionStorage.removeItem('access_token');
-            deleteCookie('access_token'); // 쿠키 삭제
             loginButton.textContent = 'LOGIN';
             alert('로그아웃 되었습니다.');
             window.location.href = 'index.html'; // 로그아웃 후 index.html로 이동
@@ -92,23 +118,22 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
 
             const formData = new FormData(loginForm);
-
             fetch('/api/auth/login', {
                 method: 'POST',
                 body: formData,
             })
-            .then((response) => {
-                if (response.status === 200) {
-                    loginButton.textContent = 'LOGOUT'; // 로그인 성공 후 버튼 텍스트 변경
-                    window.location.href = 'index.html'; // 로그인 성공 후 이동할 페이지
-                } else {
-                    throw new Error('로그인 실패. 이메일과 비밀번호를 확인하세요.');
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert(error.message);
-            });
+                .then((response) => {
+                    if (response.status === 200) {
+                        loginButton.textContent = 'LOGOUT'; // 로그인 성공 후 버튼 텍스트 변경
+                        window.location.href = 'index.html'; // 로그인 성공 후 이동할 페이지
+                    } else {
+                        throw new Error('로그인 실패. 이메일과 비밀번호를 확인하세요.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert(error.message);
+                });
         });
     }
     checkLoginStatus();
@@ -131,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
             image: 'assets/videos/step1.png',
             guide: `
                     <li>
-                        <strong>📹 Tmia 서비스 회원가입 할 때</strong>
+                        <strong>💡 서비스 회원가입 할 때</strong>
                             <ul>
                                 <li>로그인 페이지에서 회원가입 버튼을 클릭합니다.</li>
                                 <li>사용하고싶은 ID를 입력합니다.</li>
@@ -140,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </li>
                     <hr />
                     <li>
-                        <strong>📁 Tmia 서비스 로그인 할 때</strong>
+                        <strong>📢 서비스 로그인 할 때</strong>
                             <ul>
                                 <li>로그인 페이지를 클릭하여 이동합니다.</li>
                                 <li>사용자 ID를 입력합니다.</li>
@@ -155,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
             image: 'assets/videos/step2.png',
             guide: `
                     <li>
-                        <strong>📁 영상 통화 상대를 추가하고 싶을 때</strong>
+                        <strong>💙 영상 통화 상대를 추가하고 싶을 때</strong>
                         <ul>
                             <li>로그인 후 이용하기 버튼을 클릭한다.</li>
                             <li>+ 모양의 버튼을 클릭한다.</li>
@@ -164,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </li>
                     <hr />
                     <li>
-                        <strong>📁 영상 통화를 시작하고 싶을 때</strong>
+                        <strong>📞 영상 통화를 시작하고 싶을 때</strong>
                         <ul>
                             <li>로그인 후 이용하기 버튼을 클릭한다.</li>
                             <li>생성되어 있는 통화 상대방을 클릭한다.</li>
@@ -176,10 +201,10 @@ document.addEventListener('DOMContentLoaded', function () {
         3: {
             title: '03. 영상 통화',
             description: '스페이스바를 꾹 누르고 말을 한 뒤 뗍니다.<br>상대방을 위해 또박또박 말해주세요.',
-            image: 'assets/videos/step1.png',
+            image: 'assets/videos/step3.png',
             guide: `
                     <li>
-                        <strong>📹 버튼을 통해 상대방에게 질문하고 싶을 때</strong>
+                        <strong>🎈 버튼을 통해 상대방에게 질문하고 싶을 때</strong>
                         <ul>
                             <li>영상 통화 시작 후 화면 좌측의 원하는 질문을 클릭한다.</li>
                             <li>질문 클릭 시 상대방에게 해당 질문에 맞는 대답이 돌아온다.</li>
@@ -188,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </li>
                     <hr />
                     <li>
-                        <strong>📁 음성을 통해 상대방에게 질문하고 싶을 때</strong>
+                        <strong>🔊 음성을 통해 상대방에게 질문하고 싶을 때</strong>
                         <ul>
                             <li>영상 통화 시작 후 스페이스 바 버튼을 누른다.</li>
                             <li>스페이스 바를 누른 상태에서 원하는 질문을 한다.</li>
@@ -248,32 +273,29 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = 'conversation.html'; // 3초 후에 conversation.html로 이동
         }, 6400);
     });
-
     const addProfileButton = document.getElementById('addProfileButton');
     const modal = document.getElementById('modal');
     const modalClose = document.getElementById('modalClose');
     const modalForm = modal.querySelector('form');
     const profilesContainer = document.querySelector('.profiles');
+    const contactModal = document.getElementById('contactModal');
+    const modalCloseButton = document.getElementById('modalCloseButton');
 
     modal.style.display = 'none';
-    // 모달을 열기 위한 버튼 클릭 이벤트 리스너
     addProfileButton.addEventListener('click', function () {
         modal.style.display = 'flex';
     });
 
-    // 모달을 닫기 위한 닫기 버튼 클릭 이벤트 리스너
     modalClose.addEventListener('click', function () {
         modal.style.display = 'none';
     });
 
-    // 모달 외부를 클릭했을 때 모달을 닫는 이벤트 리스너
     window.addEventListener('click', function (event) {
         if (event.target === modal) {
             modal.style.display = 'none';
         }
     });
 
-    // 폼 제출 이벤트 리스너
     modalForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -281,24 +303,29 @@ document.addEventListener('DOMContentLoaded', function () {
         const photoFile = document.getElementById('photo').files[0];
         const relation = document.getElementById('relation').value;
 
-        // 사진 파일이 있는 경우에만 프로필 추가
         if (photoFile) {
             const reader = new FileReader();
             reader.onload = function (e) {
                 const profileImage = e.target.result;
                 const newProfile = document.createElement('div');
-                newProfile.classList.add('profile');
+                newProfile.classList.add('profile', 'new-profile');
                 newProfile.innerHTML = `
                         <img src="${profileImage}" alt="${name}" />
                         <div class="profile__name">${name}</div>
                     `;
+
                 profilesContainer.insertBefore(newProfile, addProfileButton.parentElement);
+                contactModal.style.display = 'flex';
             };
             reader.readAsDataURL(photoFile);
 
             modal.style.display = 'none';
             modalForm.reset();
         }
+    });
+
+    modalCloseButton.addEventListener('click', function () {
+        contactModal.style.display = 'none';
     });
 });
 
@@ -309,13 +336,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalCloseButton = document.getElementById('modalCloseButton');
 
     signupForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // 기본 폼 제출 동작 막기
+        event.preventDefault();
 
         const formData = new FormData(signupForm);
         const password = formData.get('password');
         const confirmPassword = formData.get('confirm_password');
 
-        // 비밀번호 확인
         if (password !== confirmPassword) {
             alert('비밀번호가 일치하지 않습니다.');
             return;
@@ -325,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
             method: 'POST',
             body: formData,
         }).then((response) => {
-            console.log('응답 상태:', response.status); // 응답 상태 코드 로그
+            console.log('응답 상태:', response.status);
             if (response.status === 201) {
                 signupModal.style.display = 'flex';
                 return response.json();
@@ -337,7 +363,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     modalCloseButton.addEventListener('click', function () {
         signupModal.style.display = 'none';
-        // 로그인 페이지로 이동
         window.location.href = 'login.html';
     });
 });
