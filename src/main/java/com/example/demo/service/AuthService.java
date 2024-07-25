@@ -24,9 +24,13 @@ public class AuthService {
     }
 
     public void signUp(SignUpForm signUpForm) {
+        String password = signUpForm.getPassword();
+        signUpForm.setPassword(passwordEncoder.encode(password));
 
         signUpForm.setRole(Role.GUEST);
-
+        if (userRepository.existsByEmail(signUpForm.getEmail())) {
+            throw new IllegalArgumentException("아이디 중복");
+        }
         userRepository.save(signUpForm.toEntity());
     }
 

@@ -14,7 +14,7 @@ import lombok.Getter;
 public class SignUpForm {
 
     @NotBlank
-    @Email
+//    @Email
     private String email;
 
     @NotBlank
@@ -29,6 +29,10 @@ public class SignUpForm {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public User toEntity() {

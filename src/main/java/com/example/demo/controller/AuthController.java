@@ -31,6 +31,8 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<Void> login(@Valid LoginForm loginForm) {
+        System.out.println("loginForm.getEmail() = " + loginForm.getEmail());
+        System.out.println("loginForm.getPassword() = " + loginForm.getPassword());
         String token = authService.login(loginForm);
         ResponseCookie cookie = ResponseCookie.from("token", token)
             .httpOnly(true)
