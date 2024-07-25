@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -43,6 +43,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class conversationController {
 
     private final ConversationService conversationService;
+
 
     public conversationController(ConversationService conversationService) {
         this.conversationService = conversationService;
@@ -77,6 +78,10 @@ public class conversationController {
     @PostMapping("/{id}")
     public ResponseEntity<Resource> uploadVoiceFile(
         @Valid @ModelAttribute UploadVoiceRequestDto requestDto) {
+        Resource defaultVideo = new ClassPathResource("static/video/1.mp4");
+        ResponseEntity<Resource> defaultResponse = ResponseEntity.ok()
+            .header(HttpHeaders.CONTENT_TYPE, "video/mp4")
+            .body(defaultVideo);
 
         MultipartFile requestVoice = requestDto.getFile();
         Path questionVoice;
@@ -85,7 +90,7 @@ public class conversationController {
             questionVoice = conversationService.saveFile(tempDir, requestVoice);
         } catch (IOException e) {
             log.warn("파일 업로드 실패: {}", e.getMessage());
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+            return defaultResponse;
         }
 
         RestTemplate restTemplate = new RestTemplate();
@@ -107,17 +112,20 @@ public class conversationController {
         try {
             sttResponse = restTemplate.postForObject(url, entity, STTResponseDto.class);
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "stt서버 에러");
+            log.warn("stt서버 에러");
+            return defaultResponse;
         }
 
         if (sttResponse == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            log.warn("stt서버에서 응답 받기 실패 없음");
+            return defaultResponse;
         }
 
         String voiceText = sttResponse.getText();
 
         if (voiceText.isBlank()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "빈 질문 음성입니다");
+            log.warn("빈 질문 음성");
+            return defaultResponse;
         }
 
         log.info("STT 결과: {}", voiceText);
@@ -125,7 +133,7 @@ public class conversationController {
         RestClient restClient = RestClient.create();
 
         SimilarityResponseDto similarityResponseDto = restClient.post()
-            .uri("http://localhost:8001/speaking-style")
+            .uri("http://localhost:8001/api/speaking-style")
             .contentType(APPLICATION_JSON)
             .body(new SimilarityRequestDto(voiceText))
             .retrieve()
@@ -137,7 +145,8 @@ public class conversationController {
         log.info("유사도검사 결과: {}", similarityResponseDto);
 
         if (similarityResponseDto == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            log.warn("유사도검사 결과 null");
+            return defaultResponse;
         }
 
 
@@ -147,7 +156,8 @@ public class conversationController {
 
         
         if (!video.exists()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, similarityResponseDto.toString());
+            log.warn("비디오 없음. 유사도겸사 결과: {}, 비디오: {}", similarityResponseDto, video);
+            return defaultResponse;
         }
 
         return ResponseEntity.ok()
