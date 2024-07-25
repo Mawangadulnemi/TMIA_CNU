@@ -1,15 +1,17 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const questionList = document.getElementById('question-list');
-    const apiBaseUrl = 'http://192.168.0.140:8080/api/conversation';
+    const apiBaseUrl = 'http://192.168.0.3:8080/api/conversation';
     const remoteVideo = document.getElementById('remoteVideo');
     const remoteVideo2 = document.getElementById('remoteVideo2');
     const localVideo = document.getElementById('localVideo');
     const baseVideoUrl = './assets/videos/baseVideo.mp4';
+    const endCallButton = document.getElementById('endCallButton');
+    const endCallSound = new Audio('./assets/videos/end_sound.mp3');
 
     // 기본 비디오 설정
     remoteVideo.src = baseVideoUrl;
     remoteVideo.autoplay = true;
-    remoteVideo.loop = false; // 루프를 끄고 비디오가 끝날 때마다 효과 적용
+    remoteVideo.loop = false;
 
     const response = await fetch('/question.txt');
     const text = await response.text();
@@ -26,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     questionList.querySelectorAll('button').forEach((button, index) => {
         button.addEventListener('click', () => {
-            const q = index + 1;
+            const q = index;
             const id = '34343';
             fetchVideo(id, q, apiBaseUrl, baseVideoUrl);
         });
@@ -35,7 +37,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const muteButton = document.getElementById('muteButton');
     const cameraButton = document.getElementById('cameraButton');
     const fullscreenButton = document.getElementById('fullscreenButton');
-    const endCallButton = document.getElementById('endCallButton');
 
     let isMuted = true;
     let isCameraOn = true;
@@ -71,9 +72,23 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
 
+        // 통화 종료 버튼 이벤트 리스너
         endCallButton.addEventListener('click', () => {
-            window.location.href = 'select.html';
+            showEndingUI();
         });
+
+        // 통화 종료 UI를 표시하는 함수
+        function showEndingUI() {
+            const connectingScreen = document.getElementById('connectingScreen');
+            const connectingText = connectingScreen.querySelector('p');
+            connectingText.textContent = '통화 종료 중 입니다.';
+            connectingScreen.style.display = 'flex';
+            endCallSound.play();
+
+            endCallSound.addEventListener('ended', () => {
+                window.location.href = 'select.html';
+            });
+        }
 
         let mediaRecorder;
         let audioChunks = [];

@@ -71,7 +71,7 @@
                                 <p class="introduce__step-description">
                                     로그인 버튼을 클릭해주세요.<br />ID와 PW를 입력해주세요.
                                 </p>
-                                <button class="introduce__guide-button">가이드 보기</button>
+                                <button class="introduce__guide-button" data-step="1">가이드 보기</button>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,6 @@
                 <div class="pricing__container">
                     <div class="pricing__item">
                         <div class="pricing__icon">
-                            <!-- 아이콘 삽입 -->
                             <img src="assets/videos/product.png" alt="Social Responsibility" />
                         </div>
                         <h3 class="pricing__title">제품판매 금액</h3>
@@ -96,7 +95,6 @@
                     </div>
                     <div class="pricing__item">
                         <div class="pricing__icon">
-                            <!-- 아이콘 삽입 -->
                             <img src="assets/videos/subscribe.png" alt="Governance Transparency" />
                         </div>
                         <h3 class="pricing__title">서비스 구독료</h3>
@@ -108,7 +106,6 @@
                 </div>
             </section>
         </main>
-        <!-- Footer -->
         <footer id="contact" class="footer">
             <div class="footer__container">
                 <div class="footer__contact-info">
@@ -132,5 +129,33 @@
                 </div>
             </div>
         </footer>
+
+        <!-- 가이드 모달 -->
+        <div id="guideModal" style="display: none">
+            <div class="guide-modal-content">
+                <span class="guide-modal-close">&times;</span>
+                <h2>Tmia 로그인 및 회원가입 가이드</h2>
+                <hr />
+                <ul id="guideContent">
+                    <li>
+                        <strong>📹 Tmia 서비스 회원가입 할 때</strong>
+                        <ul>
+                            <li>로그인 페이지에서 회원가입 버튼을 클릭합니다.</li>
+                            <li>사용하고싶은 ID를 입력합니다.</li>
+                            <li>사용자 계정의 비밀번호를 설정합니다.</li>
+                        </ul>
+                    </li>
+                    <hr />
+                    <li>
+                        <strong>📁 Tmia 서비스 로그인 할 때</strong>
+                        <ul>
+                            <li>로그인 페이지를 클릭하여 이동합니다.</li>
+                            <li>사용자 ID를 입력합니다.</li>
+                            <li>사용자 PassWord를 입력합니다.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </body>
 </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device=" width="device-width" />
+        <title>Tmia</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600&family=Open+Sans:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://kit.fontawesome.com/1183f98c32.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/styles.css" />
+        <script type="module" src="src/scripts.js" defer></script>
+    </head>
+    <body>
+        <header class="header">
+            <a href="index.html">
+                <img class="header__logo__img" src="assets/videos/Tmia_logo.png" alt="logo" />
+            </a>
+            <nav class="header__nav">
+                <ul class="header__menu">
+                    <li><a href="#home" class="header__menu__item active">Home</a></li>
+                    <li><a href="#about" class="header__menu__item">About</a></li>
+                    <li><a href="#introduce" class="header__menu__item">Introduce</a></li>
+                    <li><a href="#pricing" class="header__menu__item">Pricing</a></li>
+                    <li><a href="#contact" class="header__menu__item">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header__extra">
+                <a href="#" id="languageButton" class="header__language">이용하기</a>
+                <button id="loginButton" class="header__login-button">LOGIN</button>
+            </div>
+        </header>
+        <div class="signup">
+            <div class="signup__container">
+                <h2 class="signup__title">SIGN UP</h2>
+                <form class="signup__form" id="signupForm" action="/api/auth/signup" method="post">
+                    <div class="signup__form-group">
+                        <label for="username" class="signup__label">NAME</label>
+                        <input type="text" id="username" name="name" class="signup__input" required />
+                    </div>
+                    <div class="signup__form-group">
+                        <label for="id" class="signup__label">ID</label>
+                        <input type="text" id="id" name="email" class="signup__input" required />
+                    </div>
+                    <div class="signup__form-group">
+                        <label for="password" class="signup__label">PASSWORD</label>
+                        <input type="password" id="password" name="password" class="signup__input" required />
+                    </div>
+                    <div class="signup__form-group">
+                        <label for="confirm_password" class="signup__label">CONFIRM PASSWORD</label>
+                        <input type="password" id="confirm_password" class="signup__input" required />
+                    </div>
+                    <button type="submit" class="signup__button">SIGN UP</button>
+                </form>
+                <div class="signup__footer">
+                    <a href="login.html" class="signup__link">Already have an account? Login</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 회원가입 완료 모달 -->
+        <div id="signupModal" class="signup-modal">
+            <div class="signup-modal-content">
+                <p>회원가입이 완료되었습니다.</p>
+                <button id="modalCloseButton" class="modal-close-button">확인</button>
+            </div>
+        </div>
+    </body>
+</html>

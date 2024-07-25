@@ -36,10 +36,10 @@
         <div class="login">
             <div class="login__container">
                 <h2 class="login__title">LOGIN</h2>
-                <form class="login__form">
+                <form class="login__form" id="loginForm" action="/api/auth/login" method="post">
                     <div class="login__form-group">
-                        <label for="username" class="login__label">USERNAME</label>
-                        <input type="text" id="username" class="login__input" required />
+                        <label for="id" class="login__label">ID</label>
+                        <input type="text" id="id" class="login__input" required />
                     </div>
                     <div class="login__form-group">
                         <label for="password" class="login__label">PASSWORD</label>
@@ -48,18 +48,18 @@
                     <button type="submit" class="login__button">LOGIN</button>
                 </form>
                 <div class="login__footer">
-                    <a href="#" class="login__link">Forgot Password?</a>
+                    <a href="signup.html" class="login__link">Sign Up</a>
                 </div>
                 <div class="login__social">
                     <h3 class="login__social-title">소셜 로그인</h3>
                     <div class="login__social-buttons">
-                        <a href="#" class="login__social-button"
+                        <a href="/oauth2/authorization/naver" class="login__social-button"
                             ><img src="./assets/videos/naver.png" alt="Naver Login"
                         /></a>
-                        <a href="#" class="login__social-button"
+                        <a href="/oauth2/authorization/kakao" class="login__social-button"
                             ><img src="./assets/videos/kakao.png" alt="Kakao Login"
                         /></a>
-                        <a href="#" class="login__social-button"
+                        <a href="/oauth2/authorization/google" class="login__social-button"
                             ><img src="./assets/videos/google.png" alt="Google Login"
                         /></a>
                     </div>
