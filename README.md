@@ -193,7 +193,10 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 ## 이용방법
    홈페이지 접속 후 `로그인/회원가입`을 완료해주세요. 
    상단의 [`이용하기`](https://github.com/user-attachments/assets/6753e9c5-4b54-4a82-b40a-04f0f146aaec) 혹은 홈페이지 [`Tmia이용하기`](https://github.com/user-attachments/assets/cb25c79d-55c1-4838-b46e-c022e36137c5) 버튼을 눌러주세요.
-
+   
+   `로그인/회원가입`
+   
+   
    `이용하기`
 
    [![이용하기](https://github.com/user-attachments/assets/6753e9c5-4b54-4a82-b40a-04f0f146aaec)](https://github.com/user-attachments/assets/6753e9c5-4b54-4a82-b40a-04f0f146aaec)
@@ -201,6 +204,8 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
    `Tmia이용하기`
    
    [![tmia이용하기](https://github.com/user-attachments/assets/cb25c79d-55c1-4838-b46e-c022e36137c5)](https://github.com/user-attachments/assets/cb25c79d-55c1-4838-b46e-c022e36137c5)
+
+   
 
 
 
