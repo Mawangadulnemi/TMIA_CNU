@@ -34,8 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
-    // 로그인 상태 체크
     function checkLoginStatus() {
         if (sessionStorage.getItem('access_token')) {
             loginButton.textContent = 'LOGOUT';
@@ -44,6 +42,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // 로그인 상태 확인용 GET 요청
+    function verifyLoginStatus() {
+        fetch('http://192.168.0.3:8080/api/auth/', {
+            method: 'GET',
+        }).then((response) => {
+            if (response.status === 200) {
+                sessionStorage.setItem('access_token', data.access_token);
+                loginButton.textContent = 'LOGOUT';
+                checkLoginStatus();
+            } else if (response.status === 401) {
+                sessionStorage.removeItem('access_token');
+                checkLoginStatus();
+            }
+        });
+    }
+
+    verifyLoginStatus();
     checkLoginStatus();
 
     // 로그인 버튼 클릭 이벤트
@@ -98,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function () {
             })
                 .then((response) => {
                     if (response.status === 200) {
-                        sessionStorage.setItem('access_token', 'some_dummy_token');
                         loginButton.textContent = 'LOGOUT'; // 로그인 성공 후 버튼 텍스트 변경
                         window.location.href = 'index.html'; // 로그인 성공 후 이동할 페이지
                     } else {
