@@ -5,11 +5,13 @@ import static com.example.demo.exception.ErrorCode.INVALID_TOKEN;
 import static com.example.demo.exception.ErrorCode.TOKEN_EXPIRED;
 
 import com.example.demo.config.auth.TokenException;
+import com.example.demo.entity.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.Jwts.SIG;
 import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.security.SignatureException;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.Date;
@@ -47,6 +49,20 @@ public class JwtProvider {
             .compact();
     }
 
+    public String generateToken(Long id, Role role) {
+
+        Date now = Date.from(Instant.now());
+        Date expiredDate = new Date(now.getTime() + 1000 * 60 * 60 * 2L);
+
+        return Jwts.builder()
+            .subject(id.toString())
+            .claim("role", role.getKey())
+            .issuedAt(now)
+            .expiration(expiredDate)
+            .signWith(secretKey)
+            .compact();
+    }
+
     public Authentication getAuthentication(String token) {
         Claims claims = parseClaims(token);
         List<SimpleGrantedAuthority> authorities = getAuthorities(claims);
@@ -67,7 +83,7 @@ public class JwtProvider {
         }
 
         Claims claims = parseClaims(token);
-        return claims.getExpiration().after(new Date());
+        return claims.getExpiration().after(Date.from(Instant.now()));
     }
 
     private Claims parseClaims(String token) {
@@ -78,7 +94,7 @@ public class JwtProvider {
             throw new TokenException(TOKEN_EXPIRED);
         } catch (MalformedJwtException e) {
             throw new TokenException(INVALID_TOKEN);
-        } catch (SecurityException e) {
+        } catch (SignatureException e) {
             throw new TokenException(INVALID_JWT_SIGNATURE);
         }
     }

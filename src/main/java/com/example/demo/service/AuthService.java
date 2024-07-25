@@ -43,7 +43,6 @@ public class AuthService {
             throw new IllegalArgumentException();
         }
 
-        return null;
-        //return jwtProvider.generateToken(user.getId(), user.getRole());
+        return jwtProvider.generateToken(user.getId(), user.getRole());
     }
 }

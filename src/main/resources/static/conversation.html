@@ -36,14 +36,32 @@
             <div class="video-wrapper">
                 <video id="remoteVideo" autoplay muted></video>
                 <video id="remoteVideo2" autoplay muted class="hidden"></video>
+                <div id="controls">
+                    <button id="muteButton"><i class="fa-solid fa-microphone-slash"></i></button>
+                    <button id="cameraButton"><i class="fa-solid fa-video"></i></button>
+                    <button id="fullscreenButton"><i class="fa-solid fa-expand"></i></button>
+                    <button id="endCallButton"><i class="fa-solid fa-phone-slash"></i></button>
+                </div>
             </div>
             <video id="localVideo" autoplay muted></video>
+            <div id="help-text"><br /><br />스페이스 바를 누른 뒤 말하고 떼면 음성이 전송됩니다.</div>
         </div>
-        <div id="controls">
-            <button id="muteButton"><i class="fa-solid fa-microphone-slash"></i></button>
-            <button id="cameraButton"><i class="fa-solid fa-video"></i></button>
-            <button id="fullscreenButton"><i class="fa-solid fa-expand"></i></button>
-            <button id="endCallButton"><i class="fa-solid fa-phone-slash"></i></button>
+
+        <!-- 연결중 화면 -->
+        <div class="connecting-screen" id="connectingScreen" style="display: none">
+            <div class="connecting-background">
+                <img src="assets/videos/sinhaechul.png" alt="배경 이미지" class="background-img" />
+            </div>
+            <div class="loader-container">
+                <img src="assets/videos/sinhaechul.png" alt="프로필 사진" class="profile-img" />
+                <p>통화 연결 중 입니다.</p>
+                <div class="loader">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <audio id="loadingSound" src="assets/videos/loading_sound.mp3"></audio>
         </div>
     </body>
 </html>

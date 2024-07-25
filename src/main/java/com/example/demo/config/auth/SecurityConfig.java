@@ -37,6 +37,10 @@ public class SecurityConfig {
             .headers(headers -> headers.frameOptions(FrameOptionsConfig::disable))
             .sessionManagement(c -> c.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .anonymous(AbstractHttpConfigurer::disable)
+
+            .authorizeHttpRequests((authorize) -> authorize
+                .anyRequest().permitAll())
+
             .oauth2Login(oauth ->
                 oauth.userInfoEndpoint(c -> c.userService(customOAuth2UserService))
                     .successHandler(oAuth2SuccessHandler)
