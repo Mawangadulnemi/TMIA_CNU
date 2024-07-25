@@ -1,39 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const menuItems = document.querySelectorAll('.header__menu__item');
-    const sections = document.querySelectorAll('main section');
     const loginButton = document.getElementById('loginButton');
-    const languageButton = document.getElementById('languageButton');
 
-    // 메뉴 항목 클릭 이벤트
-    menuItems.forEach((item) => {
-        item.addEventListener('click', function () {
-            // 기존 활성화된 항목에서 active 클래스 제거
-            document.querySelector('.header__menu__item.active').classList.remove('active');
-            // 클릭된 항목에 active 클래스 추가
-            this.classList.add('active');
-        });
-    });
-
-    // 스크롤 이벤트를 통해 활성화된 메뉴 항목 업데이트
-    window.addEventListener('scroll', function () {
-        let currentSection = '';
-
-        // 현재 스크롤 위치에 따라 현재 섹션을 찾음
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 60) {
-                currentSection = section.getAttribute('id');
-            }
-        });
-
-        // 메뉴 항목에서 active 클래스 업데이트
-        menuItems.forEach((item) => {
-            item.classList.remove('active');
-            if (item.getAttribute('href') === `#${currentSection}`) {
-                item.classList.add('active');
-            }
-        });
-    });
+    // 로그인 상태 체크 함수
     function checkLoginStatus() {
         if (sessionStorage.getItem('access_token')) {
             loginButton.textContent = 'LOGOUT';
@@ -46,27 +14,45 @@ document.addEventListener('DOMContentLoaded', function () {
     function verifyLoginStatus() {
         fetch('/api/auth/', {
             method: 'GET',
-        }).then((response) => {
+        })
+        .then((response) => {
             if (response.status === 200) {
-                sessionStorage.setItem('access_token', data.access_token);
+                sessionStorage.setItem('access_token', 'some_dummy_token');
                 loginButton.textContent = 'LOGOUT';
-                checkLoginStatus();
             } else if (response.status === 401) {
                 sessionStorage.removeItem('access_token');
-                checkLoginStatus();
+                loginButton.textContent = 'LOGIN';
             }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            sessionStorage.removeItem('access_token');
+            loginButton.textContent = 'LOGIN';
         });
     }
 
     verifyLoginStatus();
-    checkLoginStatus();
+// 쿠키 삭제 함수
+    function deleteCookie(name) {
+        document.cookie = name + '=; Max-Age=-99999999;';
+    }
 
     // 로그인 버튼 클릭 이벤트
     loginButton.addEventListener('click', function () {
+        fetch('/api/auth/logout', {
+            method: 'GET',
+        })
+        .then((response) => {
+            return response.status === 200
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            return false
+        });
         if (sessionStorage.getItem('access_token')) {
             // 로그아웃 로직
             sessionStorage.removeItem('access_token');
-            sessionStorage.removeItem('expires_in');
+            deleteCookie('access_token'); // 쿠키 삭제
             loginButton.textContent = 'LOGIN';
             alert('로그아웃 되었습니다.');
             window.location.href = 'index.html'; // 로그아웃 후 index.html로 이동
@@ -76,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Tmia 이용하기 버튼 클릭 이벤트
+    // 기타 이벤트 리스너들
     const ctaButton = document.getElementById('ctaButton');
     if (ctaButton) {
         ctaButton.addEventListener('click', function () {
@@ -88,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 이용하기 (KOR) 버튼 클릭 이벤트
+    const languageButton = document.getElementById('languageButton');
     if (languageButton) {
         languageButton.addEventListener('click', function () {
             if (sessionStorage.getItem('access_token')) {
@@ -111,20 +97,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 method: 'POST',
                 body: formData,
             })
-                .then((response) => {
-                    if (response.status === 200) {
-                        loginButton.textContent = 'LOGOUT'; // 로그인 성공 후 버튼 텍스트 변경
-                        window.location.href = 'index.html'; // 로그인 성공 후 이동할 페이지
-                    } else {
-                        throw new Error('로그인 실패. 이메일과 비밀번호를 확인하세요.');
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    alert(error.message);
-                });
+            .then((response) => {
+                if (response.status === 200) {
+                    loginButton.textContent = 'LOGOUT'; // 로그인 성공 후 버튼 텍스트 변경
+                    window.location.href = 'index.html'; // 로그인 성공 후 이동할 페이지
+                } else {
+                    throw new Error('로그인 실패. 이메일과 비밀번호를 확인하세요.');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert(error.message);
+            });
         });
     }
+    checkLoginStatus();
 });
 
 document.addEventListener('DOMContentLoaded', function () {

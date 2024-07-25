@@ -54,4 +54,17 @@ public class AuthController {
             .header(HttpHeaders.SET_COOKIE, cookie.toString())
             .build();
     }
+
+    @GetMapping("/logout")
+    public ResponseEntity<Void> login() {
+        ResponseCookie cookie = ResponseCookie.from("token", "0")
+            .httpOnly(true)
+            .maxAge(2 * 60 * 60)
+            .path("/")
+            .build();
+        return ResponseEntity.ok()
+//            .header(HttpHeaders.AUTHORIZATION, token)
+            .header(HttpHeaders.SET_COOKIE, cookie.toString())
+            .build();
+    }
 }
