@@ -50,30 +50,6 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 
 ---
 
-## <div align="center">Source data</div>
-
-<div align="center">
-
-[신해철 라디오-고스트스테이션 음성 데이터 (MBC,SBS)](https://www.youtube.com/watch?v=WbhUpfSkknY&list=PLRIYuuY2j7Uz54IWxojLB3Ro9ondmp0rL)  
-[신해철 외형(외모) 데이터](https://www.youtube.com)  
-[신해철 프로필 데이터](https://ko.wikipedia.org/wiki/%EC%8B%A0%ED%95%B4%EC%B2%A0)
-
-</div>
-
-## <div align="center">Reference</div>
-
-<div align="center">
-
-[Gemini 1.5 pro](https://gemini.google.com/?hl=ko)  
-[Auto Model & All MiniLM L6-V2](https://python.langchain.com/v0.2/docs)  
-[파인콘 벡터 데이터 베이스](https://www.pinecone.io/)  
-[openai-whisper](https://github.com/openai/whisper)  
-[suno-ai](https://github.com/suno-ai/bark)  
-[coqui-ai](https://github.com/coqui-ai/TTS)  
-[Applio](https://github.com/IAHispano/Applio)  
-[TalkLip](https://github.com/Sxjdwang/TalkLip)
-
-</div>
 
 
 ---
