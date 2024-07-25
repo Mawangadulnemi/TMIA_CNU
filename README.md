@@ -17,7 +17,7 @@ $\textbf{\large{\textsf{\color{#FFFF99}심리적\ 치유와\ 안정}}}$
 
 ---
 # [실행 가이드 넘어가기](#실행-가이드)
-[![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/4d46495f-4c29-48e3-b5e8-190fde268ff5)]
+![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/4d46495f-4c29-48e3-b5e8-190fde268ff5)
 ---
 
 
