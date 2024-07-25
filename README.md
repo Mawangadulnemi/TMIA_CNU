@@ -1,12 +1,12 @@
 # <div align="center">SW중심대학 디지털 경진대회_SW와 생성AI의 만남 : SW 부문</div>
 
-## <div align="center">Be memorial <sub>(전남대학교: TMIA)</sub></div>
+## <div align="center"> 🖼️ Be memorial 🖼️ </div>
 
 <div align="center">
 
 **📌 대회 주제** :  **AI 고인과의 영상통화 추모 서비스** 
 `비즈니스적 가치`
- 창출하기      
+ 창출하기<sub>(전남대학교: TMIA)</sub>      
 
 **📌 대회 기간** : 2024.07.01 ~ 2024.07.19 09:59    
 
@@ -32,7 +32,7 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 
 | Leader | Crew | Crew | Crew | Crew |
 | :---: | :---: | :---: | :---: | :---: |
-| [박지민](https://github.com/Mawangadulnemi) | [임지환](https://github.com/dlawlghks) | [지연우](https://github.com/speciling) | [배채묵]() | [정재연](https://github.com/jyjnote) |
+| [박지민](https://github.com/Mawangadulnemi) | [임지환](https://github.com/dlawlghks) | [지연우](https://github.com/speciling) | [배채묵](https://github.com/BaeChaemuk) | [정재연](https://github.com/jyjnote) |
 | AI | Front | Backend | AI | AI |
 
 </div>
@@ -176,10 +176,47 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
  *학습에 사용된 데이터는 절대 제공하지 않습니다. 또한, 해당 샘플은 문제 바로 삭제 조치가 취해질 예정입니다.* 
 </div>
 
+<div align="center">
+ 
+### 이처럼 **Be** **memorial**는 고인뿐만이 아니라 사용자가 원하는 <ins>어떤 인물로든 확장이 가능합니다</ins>. 이는 **Be** **memorial**의 `상업적 가치`가 무긍무진하다는 것을 의미합니다. 
+
+<div>
+ 
+### 확장 가능성 예시
+
+#### 의료 분야:
+ **의사와의 가상 상담**: 의료 전문가와의 가상 상담을 통해 건강 조언을 제공할 수 있습니다. 이를 통해 환자와 의료 전문가 간의 소통을 더욱 원활하게 할 수 있습니다.
+ **심리 치료**: 심리 치료사와의 가상 상담을 통해 환자의 정신적 안정과 치유를 도울 수 있습니다.
+
+#### 뷰티 분야:
+ **맞춤형 뷰티 컨설팅**: 사용자에게 맞춤형 뷰티 팁과 제품 추천을 제공하는 가상 뷰티 전문가를 구현할 수 있습니다.
+ **가상 메이크업 시연**: 사용자가 다양한 메이크업 스타일을 시도해 볼 수 있는 가상 시연 서비스를 제공할 수 있습니다.
+
+#### 교육 분야:
+ **가상 교사와의 수업**: 학생들이 필요로 하는 주제에 대해 가상 교사와의 수업을 통해 학습 효과를 극대화할 수 있습니다.
+ **언어 학습**: 다양한 언어의 가상 원어민 교사를 통해 생생한 언어 학습 경험을 제공합니다.
+
+#### 엔터테인먼트 분야:
+ **가상 아이돌**: 사용자와 상호작용하는 가상 아이돌을 통해 새로운 형태의 팬 경험을 제공합니다.
+ **인터랙티브 스토리텔링**: 사용자 참여형 가상 스토리텔링 경험을 통해 엔터테인먼트를 제공합니다.
+
+### 미래 발전 방향
+
+**Be memorial**은 앞으로도 기술 발전과 함께 다양한 분야에서 새로운 가능성을 탐구할 것입니다. AI와 생성AI 기술의 발전을 바탕으로 사용자 경험을 더욱 풍부하고 다양하게 만들어 나갈 것입니다. 저희 팀은 지속적인 연구와 개발을 통해 보다 혁신적인 서비스를 제공하기 위해 최선을 다할 것입니다.
+
 
 
 
 ---
+<div align="center">
+
+ # Details
+
+ ![image](https://github.com/user-attachments/assets/fe4f1f06-f48a-4fab-8709-b57f25498a95)
+
+
+</div>
+
 
 
 
@@ -188,7 +225,9 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 ## Source data
 
 [신해철 라디오-고스트스테이션 음성 데이터 (MBC,SBS)](https://www.youtube.com/watch?v=WbhUpfSkknY&list=PLRIYuuY2j7Uz54IWxojLB3Ro9ondmp0rL)
+
 [신해철 외형(외모) 데이터](https://www.youtube.com)
+
 [신해철 프로필 데이터](https://ko.wikipedia.org/wiki/%EC%8B%A0%ED%95%B4%EC%B2%A0)
 
 
