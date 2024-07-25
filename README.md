@@ -225,12 +225,12 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 
 ### 이용하기
 
-[![Be_memorial_이용하기](https://github.com/user-attachments/assets/b8617ccb-7c8a-4717-9bc6-7736b9d78ce7)](https://github.com/user-attachments/assets/b8617ccb-7c8a-4717-9bc6-7736b9d78ce7)
+[![이용하기](https://github.com/user-attachments/assets/b8617ccb-7c8a-4717-9bc6-7736b9d78ce7)](https://github.com/user-attachments/assets/b8617ccb-7c8a-4717-9bc6-7736b9d78ce7)
 
 
-### Tmia이용하기
+### Be_memorial_이용하기
 
-[![tmia이용하기](https://github.com/user-attachments/assets/faaa431b-8f82-4976-ad04-16c1b0e8920f)](https://github.com/user-attachments/assets/faaa431b-8f82-4976-ad04-16c1b0e8920f)
+[![Be_memorial_이용하기](https://github.com/user-attachments/assets/faaa431b-8f82-4976-ad04-16c1b0e8920f)](https://github.com/user-attachments/assets/faaa431b-8f82-4976-ad04-16c1b0e8920f)
 
 ### 연결하기
 
