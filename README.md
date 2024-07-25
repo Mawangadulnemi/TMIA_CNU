@@ -222,7 +222,7 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 [![tmia이용하기](https://github.com/user-attachments/assets/cb25c79d-55c1-4838-b46e-c022e36137c5)](https://github.com/user-attachments/assets/cb25c79d-55c1-4838-b46e-c022e36137c5)
 
 ### 연결하기
-[![연결하기](https://github.com/user-attachments/assets/b08a13e4-d1f1-4b09-91a8-3f94da1e5a1e)
+[![연결하기](https://github.com/user-attachments/assets/b08a13e4-d1f1-4b09-91a8-3f94da1e5a1e)]
 
 
 
