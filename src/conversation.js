@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const questionList = document.getElementById('question-list');
-    const apiBaseUrl = 'http://192.168.0.3:8080/api/conversation';
+    const apiBaseUrl = '/api/conversation';
     const remoteVideo = document.getElementById('remoteVideo');
     const remoteVideo2 = document.getElementById('remoteVideo2');
     const localVideo = document.getElementById('localVideo');
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     questionList.querySelectorAll('button').forEach((button, index) => {
         button.addEventListener('click', () => {
-            const q = index;
+            const q = index + 1;
             const id = '34343';
             fetchVideo(id, q, apiBaseUrl, baseVideoUrl);
         });
