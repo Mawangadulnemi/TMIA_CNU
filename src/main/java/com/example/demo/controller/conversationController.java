@@ -100,7 +100,13 @@ public class conversationController {
 
         HttpEntity<MultiValueMap<String, Object>> entity = new HttpEntity<>(body, headers);
 
-        STTResponseDto sttResponse = restTemplate.postForObject(url, entity, STTResponseDto.class);
+        STTResponseDto sttResponse;
+
+        try {
+            sttResponse = restTemplate.postForObject(url, entity, STTResponseDto.class);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "stt서버 에러");
+        }
 
         if (sttResponse == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
@@ -124,11 +130,12 @@ public class conversationController {
             }))
             .body(SimilarityResponseDto.class);
 
+        log.info("유사도검사 결과: {}", similarityResponseDto);
+
         if (similarityResponseDto == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
-        log.info("유사도검사 결과: {}", similarityResponseDto);
 
 
         int videoNum = similarityResponseDto.getIndex();
