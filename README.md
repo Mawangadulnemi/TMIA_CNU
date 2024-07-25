@@ -163,7 +163,7 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 
 ## 신해철
 
-<https://github.com/user-attachments/assets/1572dced-06bd-4a6c-93d9-b1aee8d1091d.mp4>
+<https://github.com/user-attachments/assets/54a31f92-2cf6-4bd4-966c-0c93847574bc.mp4>
 
 ## 아이유
 
