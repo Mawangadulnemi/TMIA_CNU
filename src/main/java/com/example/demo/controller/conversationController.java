@@ -100,13 +100,13 @@ public class conversationController {
 
         HttpEntity<MultiValueMap<String, Object>> entity = new HttpEntity<>(body, headers);
 
-        String voiceText = restTemplate
-            .exchange(url, HttpMethod.POST, entity, String.class)
-            .getBody();
+        STTResponseDto sttResponse = restTemplate.postForObject(url, entity, STTResponseDto.class);
 
-        if (voiceText == null) {
+        if (sttResponse == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
+
+        String voiceText = sttResponse.getText();
 
         if (voiceText.isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "빈 질문 음성입니다");
