@@ -15,6 +15,7 @@ AI 기술을 활용한 고인과의 영상통화 서비스는 사랑하는 이�
 $\textbf{\large{\textsf{\color{#FFFF99}심리적\ 치유와\ 안정}}}$
 을 제공하기 위해 개발. </br>이 서비스는 고인과의 영상통화를 통해 새로운 형태의 추모 경험을 선사하며 장례 산업의 혁신을 목표로 함.
 
+![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/4d46495f-4c29-48e3-b5e8-190fde268ff5)
 
 
 **💫 기대효과💫** </br>
@@ -212,25 +213,25 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 상단의 [`이용하기`](#이용하기) 혹은 홈페이지 [`Be memorial 이용하기`](#Be_memorial_이용하기) 버튼을 눌러주세요.</br>
 인물을 다 만든 후 그 다음 [`연결하기`](#연결하기) 버튼을 눌러주세요.</br>
 음성통화가 연결되면 [`선택하기`](#선택하기)와 [`소통하기`](#소통하기)로 인물과 직접적으로 소통이 가능합니다.</br>
-다음 연결까지 성공 그 다음 [`나만의 인물 만들기`](#나만의-인물-만들기) 버튼을 눌러주세요.</br>
+다음 연결까지 성공 그 다음 [`연락처_추가하기`](#연락처_추가하기)로 새로운 인물과 소통해보세요.</br>
 😊이후 저의 **Be memorial**의 모든 서비스를 즐겨주세요😊
 
 ### 회원가입
 
-![회원가입](https://github.com/user-attachments/assets/c17109d5-f313-40c7-9f48-1dac8cc9ef96)
+![회원가입](https://github.com/user-attachments/assets/0c573783-d355-437f-8e27-8d2785afc086)
 
 ### 로그인
 
-![로그인](https://github.com/user-attachments/assets/449848bd-32b9-4620-9410-afdb534ca090)
+![로그인](https://github.com/user-attachments/assets/7aaafaa5-48af-4829-b27c-61f41fb04616)
 
 ### 이용하기
 
-[![이용하기](https://github.com/user-attachments/assets/b8617ccb-7c8a-4717-9bc6-7736b9d78ce7)](https://github.com/user-attachments/assets/b8617ccb-7c8a-4717-9bc6-7736b9d78ce7)
+[![이용하기](https://github.com/user-attachments/assets/9fb8c341-d9d2-4bb9-8517-c6f4fd64af32)](https://github.com/user-attachments/assets/9fb8c341-d9d2-4bb9-8517-c6f4fd64af32)
 
 
-### Be_memorial_이용하기
+### Be memorial 이용하기
 
-[![Be_memorial_이용하기](https://github.com/user-attachments/assets/faaa431b-8f82-4976-ad04-16c1b0e8920f)](https://github.com/user-attachments/assets/faaa431b-8f82-4976-ad04-16c1b0e8920f)
+[![Be_memorial_이용하기](https://github.com/user-attachments/assets/92b18cc0-fb6e-44d9-b152-c520fb5cc851)](https://github.com/user-attachments/assets/92b18cc0-fb6e-44d9-b152-c520fb5cc851)
 
 ### 연결하기
 
@@ -244,9 +245,9 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 
 [![소통하기](https://github.com/user-attachments/assets/660f32f7-2a1a-433e-a446-659727c27e67)](https://github.com/user-attachments/assets/660f32f7-2a1a-433e-a446-659727c27e67)
 
-### 나만의 인물 만들기
+### 연락처 추가하기
 
-![나만의 인물 만들기](https://github.com/user-attachments/assets/f259d8e2-ec31-42db-ad80-ded2a3da7d8e)
+![연락처_추가하기](https://github.com/user-attachments/assets/4a50cc89-c4ef-42c6-aaa6-d9d78862ec95)
 
 
 
