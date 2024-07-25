@@ -138,7 +138,7 @@ public class conversationController {
             .body(new SimilarityRequestDto(voiceText))
             .retrieve()
             .onStatus(HttpStatusCode::is4xxClientError, ((request, response) -> {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, voiceText);
+                log.warn("유사도분석 서버 에러");
             }))
             .body(SimilarityResponseDto.class);
 
@@ -149,6 +149,11 @@ public class conversationController {
         }
 
         log.info("유사도검사 결과: {}", similarityResponseDto.toString());
+
+        if (similarityResponseDto.getIndex() < 0) {
+            log.info("비슷한 질문 없음");
+            return defaultResponse;
+        }
 
 
         int videoNum = similarityResponseDto.getIndex();
