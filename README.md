@@ -12,16 +12,19 @@
 
 **💫 개발동기 및 서비스 제안 배경💫**  </br>
 AI 기술을 활용한 고인과의 영상통화 서비스는 사랑하는 이의 모습을 생생하게 재현하여 
-`심리적 치유와 안정`을 제공하기 위해 개발함. </br>이 서비스는 고인과의 영상통화를 통해 새로운 형태의 추모 경험을 선사하며 장례 산업의 혁신을 목표로 함.
+$\textbf{\large{\textsf{\color{#FFFF99}심리적\ 치유와\ 안정}}}$
+을 제공하기 위해 개발. </br>이 서비스는 고인과의 영상통화를 통해 새로운 형태의 추모 경험을 선사하며 장례 산업의 혁신을 목표로 함.
+
+
 
 **💫 기대효과💫** </br>
-AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하게 재현하여 사용자에게 심리적 치유와 안정을 제공. </br>이를 통해 `새로운 형태의 추모 경험`을 선사하며, 장례 산업에 `혁신적인 변화`를 제공할 것임.
+AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하게 재현하여 사용자에게 심리적 치유와 안정을 제공. </br>이를 통해 $\textbf{\large{\textsf{\color{#FFFF99}새로운 형태의 추모 경험}}}$을 선사하며, 장례 산업에 $\textbf{\large{\textsf{\color{#FFFF99}혁신적인 변화}}}$를 제공할 것입니다.
 
 </div>
 
 <div align="center">
 
-**TOOLS**</br>
+⚒️**TOOLS**🛠️</br>
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)![Pytorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)![Pinecone](https://img.shields.io/badge/Pinecone-339933?style=for-the-badge&logo=pinecone&logoColor=white)![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=Amazon%20Web%20Services&logoColor=white)![Langchain](https://img.shields.io/badge/Langchain-0078D4?style=for-the-badge&logo=langchain&logoColor=white)![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 </div>
@@ -227,10 +230,10 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 
 <div align="center">
  
-### 이처럼 **Be** **memorial**는 고인뿐만이 아니라 사용자가 원하는 <ins>어떤 인물로든 확장이 가능합니다</ins>.</br> 이는 **Be** **memorial**의 `상업적 가치`가 무긍무진하다는 것을 의미합니다. 
+### 이처럼 **Be** **memorial**는 고인뿐만이 아니라 사용자가 원하는 <ins>어떤 인물로든 확장이 가능합니다</ins>.</br> 이는 **Be** **memorial**의  $\textbf{\large{\textsf{\color{#FFFF99}상업적 가치}}}$가 무긍무진하다는 것을 의미합니다. 
 
  
-### 👁️‍🗨️확장 가능성 예시👁️‍🗨️
+### 🎆확장 가능성 예시🎆
 
 #### `의료 분야`
  **<ins>의사와의 가상 상담</ins>**: 의료 전문가와의 가상 상담을 통해 건강 조언을 제공할 수 있습니다.</br> 이를 통해 환자와 의료 전문가 간의 소통을 더욱 원활하게 할 수 있습니다.</br>
