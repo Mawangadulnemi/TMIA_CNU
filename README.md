@@ -1,4 +1,4 @@
-# <div align="center">SW중심대학 디지털 경진대회_SW와 생성AI의 만남 : SW 부문</div>
+# <div align="center">SW중심대학 디지털 경진대회_SW와 생성AI의 만남</div>
 
 ## <div align="center"> 🖼️ Be memorial 🖼️ </div>
 
