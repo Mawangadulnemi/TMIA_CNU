@@ -94,6 +94,7 @@ body {
     left: 0;
     z-index: 10; /* Ensure it is above other elements */
 }
+
 #call-status {
     background-color: #00cc44; /* Green background color */
     color: white;
@@ -101,6 +102,7 @@ body {
     border-radius: 12px;
     font-size: 12px;
 }
+
 #status-left {
     display: flex;
     gap: 10px;
@@ -134,6 +136,7 @@ body {
 .green {
     background-color: #00ca4e;
 }
+
 #status-icons {
     display: flex;
     gap: 10px;
@@ -153,6 +156,8 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #000;
+    overflow: hidden; /* Hide overflow to prevent scrolling */
+    padding-bottom: 70px; /* Add padding to make space for controls */
 }
 
 .video-wrapper video {
@@ -194,6 +199,7 @@ body {
     background: rgba(0, 0, 0, 0.5);
     padding: 10px 20px;
     border-radius: 30px;
+    z-index: 10; /* Ensure it is above other elements */
 }
 
 button {
@@ -229,4 +235,122 @@ button i {
 
 #endCallButton:hover {
     background-color: #c0392b;
+}
+
+#help-text {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ffffff;
+}
+
+#help-text:before {
+    content: '도움말: ';
+    font-weight: bold;
+}
+
+#help-text:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgba(0, 0, 0, 0.7); /* Match background color of text box */
+}
+/* Connecting Screen */
+#connectingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.connecting-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(20px) brightness(20%);
+}
+
+.loader-container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-bottom: 20px;
+}
+
+.loader-container p {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.loader span {
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    animation: bounce 1.4s infinite both;
+}
+
+.loader span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.loader span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loader span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
 }

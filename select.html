@@ -23,46 +23,72 @@
             </div>
         </header>
         <div class="container">
-            <div class="title">영상통화를 걸 상대방을 선택하세요.</div>
+            <div class="title">보고싶은 사람을 선택해주세요.</div>
             <div class="profiles">
                 <div class="profile">
-                    <img src="assets/videos/sinhaechul.png" alt="신해철" />
+                    <img src="assets/videos/sinhaechul.png" alt="신해철" id="sinhaechulProfile" />
                     <div class="profile__name">신해철</div>
                 </div>
                 <div class="add__profile profile">
                     <div class="profile__icon-container" id="addProfileButton">
                         <i class="fa-solid fa-circle-plus profile__icon"></i>
                     </div>
-                    <div class="profile__name">상대방 추가</div>
+                    <div class="profile__name">연락처 추가</div>
                 </div>
             </div>
-            <button class="manage-button">상대방 관리</button>
         </div>
 
         <!-- Modal -->
         <div class="modal" id="modal">
             <div class="modal__content">
                 <span class="modal__close" id="modalClose">&times;</span>
-                <h2>상대방 추가</h2>
+                <h2>연락처 추가하기</h2>
+                <br />
                 <form>
                     <div class="modal__form-group">
-                        <label for="name">이름:</label>
+                        <label for="name">고인의 이름을 적어주세요.</label>
                         <input type="text" id="name" name="name" required />
                     </div>
                     <div class="modal__form-group">
-                        <label for="photo">사진:</label>
+                        <label for="photo">가장 좋아하는 그 사람의 사진을 올려주세요.</label>
                         <input type="file" id="photo" name="photo" accept="image/*" required />
                     </div>
                     <div class="modal__form-group">
-                        <label for="voice">음성파일:</label>
+                        <label for="voice">그 사람의 목소리를 들려주세요.</label>
                         <input type="file" id="voice" name="voice" accept="audio/*" required />
                     </div>
                     <div class="modal__form-group">
-                        <label for="relation">나와의 기억</label>
+                        <label for="relation">그 사람과의 추억을 적어주세요.</label>
                         <input type="file" id="relation" name="relation" accept="pdf/*" required />
                     </div>
                     <button type="submit" class="modal__submit-button">추가</button>
                 </form>
+            </div>
+        </div>
+
+        <!-- 연결중 화면 -->
+        <div class="connecting-screen" id="connectingScreen" style="display: none">
+            <div class="connecting-background">
+                <img src="assets/videos/sinhaechul.png" alt="배경 이미지" class="background-img" />
+            </div>
+            <div class="loader-container">
+                <img src="assets/videos/sinhaechul.png" alt="프로필 사진" class="profile-img" />
+                <p>통화 연결 중 입니다.</p>
+                <div class="loader">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <audio id="loadingSound" src="assets/videos/loading_sound.mp3"></audio>
+        </div>
+        <!-- 연락처 생성 모달 -->
+        <div id="contactModal" class="contact-modal">
+            <div class="contact-modal-content">
+                <p>연락처를 생성하는 중입니다.</p>
+                <br />
+                <p>약 1시간 이상 소요됩니다.</p>
+                <button id="modalCloseButton" class="modal-close-button">확인</button>
             </div>
         </div>
     </body>

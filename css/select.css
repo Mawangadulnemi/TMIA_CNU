@@ -84,21 +84,38 @@ a {
 
 .header__language {
     color: var(--color-white);
-    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-white);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header__language:hover {
+    background-color: var(--color-accent);
+    color: var(--color-black);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .header__login-button {
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
     color: var(--color-white);
     background-color: var(--color-primary);
     border: 1px solid var(--color-white);
     border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header__login-button:hover {
     background-color: var(--color-accent);
+    color: var(--color-black);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 .container {
     text-align: center;
@@ -170,6 +187,10 @@ a {
     margin-top: 10px;
     font-size: 1.2rem;
     font-weight: 600;
+}
+.new-profile {
+    opacity: 0.5;
+    animation: spin 2s linear infinite;
 }
 
 .manage-button {
@@ -278,6 +299,140 @@ a {
 }
 
 .modal__submit-button:hover {
+    background-color: var(--color-accent-variant);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.connecting-screen {
+    display: none; /* 처음엔 숨기기 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* 불투명도를 높여서 더 어둡게 */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+}
+
+.connecting-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(20px) brightness(20%); /* 더 어둡고 흐리게 설정 */
+}
+
+.loader-container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-bottom: 20px;
+}
+
+.loader-container p {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.loader span {
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    animation: bounce 1.4s infinite both;
+}
+
+.loader span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.loader span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loader span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+/* 연락처 생성 모달 스타일 */
+.contact-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-modal-content {
+    background-color: rgba(15, 15, 15, 0.95);
+    color: white;
+    border: 2px solid rgba(182, 178, 178, 0.5);
+    border-radius: 15px;
+    width: 80%;
+    max-width: 420px;
+    height: auto;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.modal-close-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-close-button:hover {
     background-color: var(--color-accent-variant);
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);

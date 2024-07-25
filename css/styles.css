@@ -287,7 +287,7 @@ button:focus {
 
 .introduce__step-image {
     width: 750px;
-    height: 350px;
+    height: 380px;
     margin-right: 1rem;
 }
 
@@ -342,109 +342,6 @@ button:focus {
 .introduce__guide-button:hover {
     background-color: var(--color-accent);
     color: var(--color-white);
-}
-
-/* Pricing Section */
-.pricing {
-    height: 100vh;
-    padding: 4rem 0;
-    color: var(--color-white);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-        url('/mnt/data/image.png') no-repeat center center/cover;
-}
-
-.pricing__header {
-    margin-bottom: 2rem;
-}
-
-.pricing__header h2 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.pricing__header p {
-    font-size: 1.2rem;
-    color: var(--color-accent);
-}
-
-.pricing__container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5rem;
-    max-width: var(--size-max-width);
-    margin: 0 auto;
-    flex-wrap: wrap;
-}
-
-.pricing__item {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 2rem;
-    border-radius: 16px;
-    flex: 1;
-    min-width: 300px;
-    max-width: 400px;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* 아이템 내용 가운데 정렬 */
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.pricing__item:hover {
-    transform: translateY(-10px);
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.pricing__icon img {
-    width: 64px;
-    height: 64px;
-    margin-bottom: 1rem;
-}
-
-.pricing__title {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-white);
-}
-
-.pricing__description {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    color: var(--color-white);
-}
-
-.pricing__link {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    color: var(--color-white);
-    background-color: transparent;
-    border: 2px solid var(--color-white);
-    border-radius: 50%;
-    text-align: center;
-    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-}
-
-.pricing__link:hover {
-    background-color: var(--color-white);
-    color: var(--color-primary);
-    border-color: var(--color-white);
-    transform: rotate(90deg);
-}
-
-.arrow {
-    font-size: 1.5rem;
 }
 
 /* Login Section */
@@ -519,7 +416,7 @@ button:focus {
 }
 
 .login__button:hover {
-    background-color: var(--color-orange);
+    background-color: var(--color-primary-variant);
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
@@ -538,7 +435,7 @@ button:focus {
 }
 
 .login__link:hover {
-    color: var(--color-orange);
+    color: var(--color-primary-variant);
 }
 
 .login__divider {
@@ -582,6 +479,183 @@ button:focus {
 /* Hover effect for the social login buttons */
 .login__social-button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* 회원가입 스타일 */
+.signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #15161a 0%, #07080a 100%);
+}
+
+.signup__container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.signup__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--color-white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.signup__form-group {
+    margin-bottom: 2rem;
+}
+
+.signup__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--color-white);
+    text-align: left;
+}
+
+.signup__input {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup__input:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+    outline: none;
+}
+
+.signup__button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border-radius: 8px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.signup__button:hover {
+    background-color: var(--color-accent-variant);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.signup__footer {
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: var (--color-white);
+}
+
+.signup__link {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.signup__link:hover {
+    color: var(--color-accent-variant);
+}
+
+.signup__social {
+    margin-top: 2rem;
+}
+
+.signup__social-title {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: var(--color-white);
+}
+
+.signup__social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.signup__social-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup__social-button:hover {
+    background-color: var(--color-accent);
+}
+
+.signup__social-button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* 회원가입 완료 모달 스타일 */
+.signup-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-modal-content {
+    background-color: rgba(15, 15, 15, 0.95);
+    color: white;
+    border: 2px solid rgba(182, 178, 178, 0.5);
+    border-radius: 15px;
+    width: 80%;
+    max-width: 420px;
+    height: auto;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.modal-close-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-close-button:hover {
+    background-color: var(--color-accent-variant);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Footer */
@@ -659,4 +733,91 @@ button:focus {
 
 .footer__privacy-policy:hover {
     color: var(--color-accent);
+}
+/* Guide Modal */
+#guideModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.guide-modal-content {
+    background-color: rgba(15, 15, 15, 0.95); /* 더 어두운 배경색 */
+    color: white;
+    border: 2px solid rgba(182, 178, 178, 0.5); /* 흰색 계열 테두리 */
+    border-radius: 15px;
+    width: 80%;
+    max-width: 420px;
+    height: auto;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+}
+
+.guide-modal-content h2 {
+    margin-top: 0;
+    font-size: 1.4rem; /* 글자 사이즈 줄임 */
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.guide-modal-content ul {
+    list-style: none;
+    padding: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.guide-modal-content li {
+    margin-bottom: 10px; /* margin 줄임 */
+}
+
+.guide-modal-content strong {
+    font-size: 1rem; /* 글자 사이즈 줄임 */
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.guide-modal-content ul ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.guide-modal-content ul ul li {
+    background: none;
+    padding: 0;
+    margin-bottom: 5px;
+    color: #a9a9a9;
+}
+
+.guide-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #ffffff;
+    font-size: 1.5rem; /* 크기 증가 */
+    cursor: pointer;
+}
+
+.guide-modal-close:hover {
+    color: #ff605c;
+}
+
+.guide-modal-content hr {
+    border: 0;
+    border-top: 1px solid #575757;
+    margin: 1rem 0;
 }
