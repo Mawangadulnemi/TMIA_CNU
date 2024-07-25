@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
@@ -78,7 +79,10 @@ public class conversationController {
     @PostMapping("/{id}")
     public ResponseEntity<Resource> uploadVoiceFile(
         @Valid @ModelAttribute UploadVoiceRequestDto requestDto) {
-        Resource defaultVideo = new ClassPathResource("static/video/1.mp4");
+        Random random = new Random();
+        int randNum = random.nextInt(4) + 1;
+        String randVideoName = "avoid" + randNum + ".mp4";
+        Resource defaultVideo = new ClassPathResource("static/video/"+randVideoName);
         ResponseEntity<Resource> defaultResponse = ResponseEntity.ok()
             .header(HttpHeaders.CONTENT_TYPE, "video/mp4")
             .body(defaultVideo);
