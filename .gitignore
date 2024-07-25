@@ -37,3 +37,5 @@ out/
 .vscode/
 /src/main/resources/static/video/
 /src/main/resources/static/assets/videos/
+/src/main/resources/application-oauth.properties
+/src/main/resources/META-INF/

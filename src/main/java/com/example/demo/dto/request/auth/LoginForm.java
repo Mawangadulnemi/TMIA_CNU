@@ -10,7 +10,7 @@ import lombok.Getter;
 public class LoginForm {
 
     @NotBlank
-    @Email
+//    @Email
     private String email;
 
     @NotBlank

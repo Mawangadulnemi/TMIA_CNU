@@ -1,145 +1,356 @@
 body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  height: 100vh;
-  background-color: #000;
-  color: white;
-  font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #000;
+    color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    border: 2px solid #575757; /* Adding border around the body */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Adding shadow to create depth */
 }
 
 #question-container {
-  width: 250px;
-  height: 100vh;
-  overflow-y: auto;
-  background-color: #2c2c2c;
-  position: fixed;
-  left: 0;
-  top: 0;
-  padding: 10px;
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: #575757 #2c2c2c; /* For Firefox */
+    width: 250px;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #2c2c2c;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #575757 #2c2c2c; /* For Firefox */
 }
 
 /* For Webkit browsers */
 #question-container::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 
 #question-container::-webkit-scrollbar-track {
-  background: #2c2c2c;
+    background: #2c2c2c;
 }
 
 #question-container::-webkit-scrollbar-thumb {
-  background-color: #575757;
-  border-radius: 10px;
-  border: 2px solid #2c2c2c;
+    background-color: #575757;
+    border-radius: 10px;
+    border: 2px solid #2c2c2c;
 }
 
 #question-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 #question-list li {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #question-list button {
-  width: 100%;
-  padding: 30px 10px;
-  background-color: #3a3a3a;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: left;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  transition: background-color 0.3s ease;
+    width: 100%;
+    padding: 30px 10px;
+    background-color: #3a3a3a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
 }
 
 #question-list button:hover {
-  background-color: #575757;
+    background-color: #575757;
 }
 
 #video-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  margin-left: 260px; /* Adjust this value to provide enough space for the question container */
-  position: relative;
-  background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 250px;
+    position: relative;
+    background-color: #000;
+    height: 100vh; /* Ensure it takes full height */
+    overflow: hidden; /* Hide overflow to prevent scrolling */
 }
 
-#remoteVideo {
-  width: 100%;
-  height: 100vh;
-  background-color: #000;
-  border-radius: 16px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  object-fit: cover;
-  opacity: 1;
-  transition: opacity 1s ease;
+#top-bar {
+    width: 100%;
+    height: 30px; /* Adjust the height as needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent background */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10; /* Ensure it is above other elements */
 }
 
-#localVideo {
-  width: 20%;
-  height: 20%;
-  background-color: #000;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  object-fit: cover;
+#call-status {
+    background-color: #00cc44; /* Green background color */
+    color: white;
+    padding: 2px 25px;
+    border-radius: 12px;
+    font-size: 12px;
 }
 
-#controls {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 15px;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 10px 20px;
-  border-radius: 30px;
+#status-left {
+    display: flex;
+    gap: 10px;
+    margin-left: 30px;
 }
 
-button {
-  width: 50px;
-  height: 50px;
-  padding: 0;
-  font-size: 20px;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;
+#status-left span {
+    color: white;
 }
 
-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
+#status-center {
+    margin-right: 480px;
+    display: flex;
+    gap: 8px;
 }
 
-button i {
-  color: white;
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.red {
+    background-color: #ff605c;
+}
+
+.orange {
+    background-color: #ffbd44;
+}
+
+.green {
+    background-color: #00ca4e;
+}
+
+#status-icons {
+    display: flex;
+    gap: 10px;
+    margin-right: 30px;
+}
+
+#status-icons i {
+    color: white;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 56.25vh; /* Controls the maximum width to maintain 9:16 aspect ratio */
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    overflow: hidden; /* Hide overflow to prevent scrolling */
+    padding-bottom: 70px; /* Add padding to make space for controls */
+}
+
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    object-fit: contain; /* Maintain aspect ratio without cropping */
+    transition: opacity 0.5s ease;
 }
 
 .hidden {
-  display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#localVideo {
+    width: 11%; /* Adjusted size */
+    height: 27%; /* Maintain aspect ratio */
+    background-color: #000;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: absolute; /* Changed to absolute positioning */
+    top: 2vh; /* Adjusted to place at the top */
+    right: 5vw; /* Adjusted to place on the right */
+    object-fit: cover;
+}
+
+#controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 30px;
+    z-index: 10; /* Ensure it is above other elements */
+}
+
+button {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+button i {
+    color: white;
+}
+
+.visible {
+    opacity: 1;
+    transition: opacity 1s;
 }
 
 #endCallButton {
-  background-color: #e74c3c;
+    background-color: #e74c3c;
 }
 
 #endCallButton:hover {
-  background-color: #c0392b;
+    background-color: #c0392b;
+}
+
+#help-text {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ffffff;
+}
+
+#help-text:before {
+    content: '도움말: ';
+    font-weight: bold;
+}
+
+#help-text:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgba(0, 0, 0, 0.7); /* Match background color of text box */
+}
+/* Connecting Screen */
+#connectingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.connecting-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(20px) brightness(20%);
+}
+
+.loader-container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-bottom: 20px;
+}
+
+.loader-container p {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.loader span {
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    animation: bounce 1.4s infinite both;
+}
+
+.loader span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.loader span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loader span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
 }

@@ -18,10 +18,11 @@ public class ConversationServiceImpl implements ConversationService {
     }
 
     @Override
-    public void saveFile(Path tempDir, MultipartFile file) throws IOException {
+    public Path saveFile(Path tempDir, MultipartFile file) throws IOException {
         Path tempFile = tempDir.resolve("uploaded.wav");
         Files.copy(file.getInputStream(), tempFile, StandardCopyOption.REPLACE_EXISTING);
         log.info("파일 업로드 성공: {}", tempFile);
+        return tempFile;
     }
 
     @Override
