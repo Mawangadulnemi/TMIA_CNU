@@ -89,7 +89,7 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
     <td align="center" valign="top">
       <ul>
         <li>자연스러운 얼굴 표정 변화</li>
-        <li>사용자가 원하는   맞춤  외형</li>
+        <li>사용자가 원하는 맞춤 외형</li>
       </ul>
     </td>
     <td align="center" valign="top">
@@ -105,21 +105,21 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 
 <table>
   <tr>
-    <td align="center" valign="top"><b>신해철</b></td>
-    <td align="center" valign="top"><b>아이유</b></td>
     <td align="center" valign="top"><b>이선균</b></td>
+    <td align="center" valign="top"><b>아이유</b></td>
+    <td align="center" valign="top"><b>신해철</b></td>
     <td align="center" valign="top"><b>김채원</b></td>
     <td align="center" valign="top"><b>고윤정</b></td>
   </tr>
   <tr>
     <td align="center" valign="top">
-      <img src="https://github.com/user-attachments/assets/3ca746b3-ad07-40fe-844e-48afeb185c2b" alt="image1" width="200"/>
+      <img src="https://github.com/user-attachments/assets/e6591a70-c283-46d5-baf7-46e08857296b" alt="image3" width="200"/>
     </td>
     <td align="center" valign="top">
       <img src="https://github.com/user-attachments/assets/39500fa4-815c-4579-8cbc-ad3b6701008d" alt="image2" width="200"/>
     </td>
     <td align="center" valign="top">
-      <img src="https://github.com/user-attachments/assets/e6591a70-c283-46d5-baf7-46e08857296b" alt="image3" width="200"/>
+      <img src="https://github.com/user-attachments/assets/3ca746b3-ad07-40fe-844e-48afeb185c2b" alt="image1" width="200"/>
     </td>
     <td align="center" valign="top">
       <img src="https://github.com/user-attachments/assets/4f7cf4ca-e338-4f3c-b8bb-70c989fd0641" alt="image4" width="200"/>
@@ -129,25 +129,13 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
     </td>
   </tr>
   <tr>
-    <td align="center" valign="top"><b>대중가요의 시작</b></td>
-    <td align="center" valign="top"><b>최고의 여가수</b></td>
     <td align="center" valign="top"><b>역사적 배우</b></td>
+    <td align="center" valign="top"><b>최고의 여가수</b></td>
+    <td align="center" valign="top"><b>대중가요의 시작</b></td>
     <td align="center" valign="top"><b>인기 아이돌</b></td>
     <td align="center" valign="top"><b>핫한 여배우</b></td>
   </tr>
   <tr>
-    <td align="center" valign="top">
-      <ul>
-       <li>대중음악 혁신자</li> 
-       <li>사회적 목소리 </li>
-      </ul>
-    </td>
-    <td align="center" valign="top">
-      <ul>
-         <li>감성적인 음색</li> 
-         <li>다재다능 아티스트</li>
-      </ul>
-    </td>
     <td align="center" valign="top">
       <ul>
         <li>진중한 연기</li>
@@ -156,13 +144,25 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
     </td>
     <td align="center" valign="top">
       <ul>
-       <li>무대 위 빛나는 존재</li>
-       <li>청량한 목소리</li>
+        <li>감성적인 음색</li>
+        <li>다재다능 아티스트</li>
       </ul>
     </td>
     <td align="center" valign="top">
       <ul>
-        <li>신예 배우</li> 
+        <li>대중음악 혁신자</li>
+        <li>사회적 목소리</li>
+      </ul>
+    </td>
+    <td align="center" valign="top">
+      <ul>
+        <li>무대 위 빛나는 존재</li>
+        <li>청량한 목소리</li>
+      </ul>
+    </td>
+    <td align="center" valign="top">
+      <ul>
+        <li>신예 배우</li>
         <li>떠오르는 스타</li>
       </ul>
     </td>
