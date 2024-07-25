@@ -147,7 +147,7 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
     </td>
     <td align="center" valign="top">
       <ul>
-       <li>인기 여자아이돌 </li>
+       <li>무대 위 빛나는 존재</li>
        <li>청량한 목소리</li>
       </ul>
     </td>
@@ -217,15 +217,6 @@ AI 고인과의 영상통화 추모 서비스는 고인의 기억을 생생하�
 
 
 
----
-<div align="center">
-
- # Details
-
- ![image](https://github.com/user-attachments/assets/fe4f1f06-f48a-4fab-8709-b57f25498a95)
-
-
-</div>
 
 
 
